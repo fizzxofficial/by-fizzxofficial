@@ -1,186 +1,254 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gudang Mt Unband</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gudang Mt Unband</title>
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(270deg, #8B0000, #B22222);
-      background-size: 400% 400%;
-      animation: moveBg 15s ease infinite;
-      color: #f5f5f5;
-      text-align: center;
-    }
+<!-- FontAwesome for social icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
 
-    @keyframes moveBg {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-    header {
-      padding: 20px;
-    }
+  :root {
+    --red-dark: #8b0000;
+    --red-light: #b22222;
+    --pink-3d: #ff6f91;
+    --pink-shadow: #d94f6a;
+    --white-dark: #e6e6e6;
+    --bg-gradient-start: #a52a2a;
+    --bg-gradient-end: #7b1a1a;
+  }
 
-    header img {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive, monospace;
+    background: linear-gradient(270deg, #8b0000, #b22222, #8b0000);
+    background-size: 600% 600%;
+    animation: bgMove 20s ease infinite;
+    color: var(--white-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+  }
 
-    h1 {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 20px;
-      color: #fff;
-      margin: 0;
+  @keyframes bgMove {
+    0% {
+      background-position: 0% 50%;
     }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 
-    p.subtitle {
-      color: #ddd;
-      margin: 15px 0;
-      font-size: 14px;
-    }
+  /* Logo */
+  #logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 8px var(--pink-shadow);
+    background: var(--pink-3d);
+  }
 
-    .button {
-      display: block;
-      width: 80%;
-      margin: 15px auto;
-      padding: 15px;
-      background: #FF6F91;
-      color: #fff;
-      font-weight: bold;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 6px #B22222;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+  h1 {
+    font-size: 1.8rem;
+    color: var(--white-dark);
+    margin: 0;
+    user-select: none;
+    text-shadow:
+      1px 1px 0 #000,
+      2px 2px 0 #4b0000;
+  }
+  #subtitle {
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    color: var(--white-dark);
+    margin-top: 6px;
+    user-select: none;
+  }
 
-    .button:active {
-      background: #8B0000;
-      box-shadow: 0 3px #600000;
-      transform: translateY(3px);
-    }
+  .spacer-2 {
+    height: 2rem;
+  }
 
-    .hidden-text {
-      display: none;
-      margin: 15px auto;
-      width: 90%;
-      background: #FF6F91;
-      padding: 15px;
-      border-radius: 12px;
-      color: #fff;
-      white-space: pre-line;
-      text-align: left;
-      box-shadow: 0 6px #B22222;
-    }
+  .btn-container {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
 
-    .copy-btn {
-      margin-top: 10px;
-      padding: 8px 12px;
-      background: #B22222;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      cursor: pointer;
-    }
+  button.mt-unband-btn {
+    background: var(--pink-3d);
+    border: none;
+    border-radius: 12px;
+    padding: 18px 20px;
+    font-family: 'Press Start 2P', cursive, monospace;
+    font-size: 0.8rem;
+    color: white;
+    box-shadow: 4px 4px 8px var(--pink-shadow);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    text-align: left;
+  }
+  button.mt-unband-btn:active,
+  button.mt-unband-btn.active {
+    background-color: var(--red-dark);
+    box-shadow: inset 4px 4px 8px #5a0000;
+  }
 
-    .social-icons {
-      margin: 30px 0 10px 0;
-    }
+  #text-display {
+    max-width: 700px;
+    background: var(--pink-3d);
+    box-shadow: 4px 4px 8px var(--pink-shadow);
+    border-radius: 12px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+    color: #fff;
+    user-select: text;
+    min-height: 180px;
+    margin-bottom: 30px;
+  }
 
-    .social-icons a {
-      color: white;
-      margin: 0 15px;
-      font-size: 28px;
-      transition: 0.3s;
-    }
+  #copy-btn {
+    background: var(--pink-3d);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-family: 'Press Start 2P', cursive, monospace;
+    font-size: 0.8rem;
+    color: white;
+    box-shadow: 4px 4px 8px var(--pink-shadow);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 40px;
+  }
+  #copy-btn:active {
+    background-color: var(--red-dark);
+    box-shadow: inset 4px 4px 8px #5a0000;
+  }
 
-    .social-icons a:hover {
-      color: #FF6F91;
-    }
+  .social-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 10px;
+  }
+  .social-container a {
+    color: var(--white-dark);
+    font-size: 2.5rem;
+    transition: color 0.3s ease;
+  }
+  .social-container a:hover {
+    color: var(--pink-3d);
+  }
 
-    footer {
-      margin: 20px 0;
-      font-size: 14px;
-      color: #fff;
-    }
-  </style>
+  #creator {
+    font-family: 'Press Start 2P', cursive, monospace;
+    font-size: 0.8rem;
+    color: var(--white-dark);
+    user-select: none;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <!-- Ganti link src di bawah dengan link logo kamu -->
-    <img src="https://autoresbot.com/tmp_files/0e0c62ec-31eb-4ddd-b308-04e46ec504cd.jpg" alt="Logo">
-    <h1>Welcome Gudang Mt Unband</h1>
-    <p class="subtitle">Di Sini Kalian Dapat Mengambil Mt Unband Untuk Membuka WhatsApp Yang Terkena Band/Kenon'</p>
-  </header>
 
-  <!-- Tombol 1 -->
-  <button class="button" onclick="toggleText('text1')">Mt Unband Turki perma hard/batu</button>
-  <div id="text1" class="hidden-text">
-    𝙈𝙀𝙏𝙊𝘿𝙀 𝙐𝙉𝘽𝘼𝙉𝘿 𝙏𝙐𝙍𝙆𝙄 𝘽𝙐𝘼𝙏 𝙋𝙀𝙍𝙈𝘼 𝙃𝘼𝙍𝘿/𝘽𝘼𝙏𝙐 
+<!-- Logo langsung -->
+<img id="logo" src="https://autoresbot.com/tmp_files/0e0c62ec-31eb-4ddd-b308-04e46ec504cd.jpg" alt="Logo" />
 
-Здравствуйте, команда поддержки WhatsApp...
-    <button class="copy-btn" onclick="copyText('text1')">Copy</button>
-  </div>
+<h1>Welcome Gudang Mt Unband 𝙁𝙞𝙯𝙯𝙭 𝙊𝙛𝙛𝙞𝙘𝙞𝙖𝙡 </h1>
+<div id="subtitle">Di Sini Kalian Dapat Mengambil Mt Unband Untuk Membuka WhatsApp Yang Terkena Band/Kenon'</div>
 
-  <!-- Tombol 2 -->
-  <button class="button" onclick="toggleText('text2')">Mt Unband Spam</button>
-  <div id="text2" class="hidden-text">
-    𝙈𝙏 𝙐𝙉𝘽𝘼𝙉𝘿 𝙎𝙋𝘼𝙈
+<div class="spacer-2"></div>
 
-olá mark asu Zuckerberg...
-    <button class="copy-btn" onclick="copyText('text2')">Copy</button>
-  </div>
+<div class="btn-container">
+  <button class="mt-unband-btn" data-text="metode-turki">
+    Mt Unband Turki perma hard/batu
+  </button>
+  <button class="mt-unband-btn" data-text="mt-spam">
+    mt unband spam
+  </button>
+  <button class="mt-unband-btn" data-text="new-mt-hard">
+    new mt unband batu/hard
+  </button>
+  <button class="mt-unband-btn" data-text="mt-all-type">
+    mt unband all type
+  </button>
+</div>
 
-  <!-- Tombol 3 -->
-  <button class="button" onclick="toggleText('text3')">New Mt Unband Hard/Batu</button>
-  <div id="text3" class="hidden-text">
-    𝙉𝙀𝙒 𝙈𝙏 𝙐𝙉𝘽𝘼𝙉𝘿 𝙃𝘼𝙍𝘿/𝘽𝘼𝙏𝙐 
+<div id="text-display" aria-live="polite" aria-label="Teks unband akan muncul di sini"></div>
 
-Ciao smb@support.whatsapp.com...
-    <button class="copy-btn" onclick="copyText('text3')">Copy</button>
-  </div>
+<button id="copy-btn" aria-label="Salin teks unband">Copy Text</button>
 
-  <!-- Tombol 4 -->
-  <button class="button" onclick="toggleText('text4')">Mt Unband All Type</button>
-  <div id="text4" class="hidden-text">
-    𝙉𝙀𝙒 𝙈𝙏 𝙐𝙉𝘽𝘼𝙉𝘿 𝘼𝙇𝙇 𝙏𝙔𝙋𝙀 𝙀𝘼𝙎𝙔/𝙃𝘼𝙍𝘿/𝘽𝘼𝙏𝙐/𝙇𝙐𝙈𝙐𝙏
+<div class="social-container" aria-label="Sosial media dan komunikasi">
+  <a href="https://whatsapp.com/channel/0029VbB9tFB5Ui2WUrPAsV2B" target="_blank" rel="noopener" aria-label="Whatsapp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://t.me/fizzxofficial" target="_blank" rel="noopener" aria-label="Telegram">
+    <i class="fab fa-telegram"></i>
+  </a>
+</div>
 
-Bonjour cher WhatsApp...
-    <button class="copy-btn" onclick="copyText('text4')">Copy</button>
-  </div>
+<div id="creator">CREATOR : 𝙁𝙞𝙯𝙯𝙭 𝙊𝙛𝙛𝙞𝙘𝙞𝙖𝙡</div>
 
-  <!-- Social Media -->
-  <div class="social-icons">
-    <a href="https://whatsapp.com/channel/0029VbB9tFB5Ui2WUrPAsV2B"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://t.me/fizzxofficial"><i class="fab fa-telegram"></i></a>
-  </div>
+<script>
+  const texts = {
+    "metode-turki": `𝙈𝙀𝙏𝙊𝘿𝙀 𝙐𝙉𝘽𝘼𝙉𝘿 𝙏𝙐𝙍𝙆𝙄 𝘽𝙐𝘼𝙏 𝙋𝙀𝙍𝙈𝘼 𝙃𝘼𝙍𝘿/𝘽𝘼𝙏𝙐
 
-  <footer>
-    CREATOR : 𝙁𝙞𝙯𝙯𝙭 𝙊𝙛𝙛𝙞𝙘𝙞𝙖𝙡
-  </footer>
+Здравствуйте, команда поддержки WhatsApp, меня зовут Мафия Танты. Я учусь в Джумаа Танта в великой стране Египет. Я учусь в этом университете и сегодня надеюсь, что WhatsApp решит мою проблему как можно скорее. Сегодня мой номер был заблокирован без причины, и я не нарушил никаких условий обслуживания WhatsApp. Меня заблокировали через WhatsApp под названием WhatsApp Reverse Messages. Хакеры используют этот WhatsApp под названием WhatsApp Reverse Messages, и они проникают и атакуют пользователей WhatsApp. Хакер под названием Mafia создал этого человека. Этот человек - очень опасный хакер. Он угрожал мне, что заблокирует мой номер, если я не буду использовать WhatsApp, который называется обратными сообщениями WhatsApp, и если я не буду публиковать опасные террористические фотографии и порнографические изображения в WhatsApp , и я так и не согласился на их просьбу, и он взломал мой номер и использовал WhatsApp, который называется обратными сообщениями WhatsApp, и он активировал кнопку обратного сообщения, отменил сообщения и заблокировал мой номер без каких-либо причин. Причина в том, что я это сделал не нарушать условия обслуживания компании WhatsApp, и я надеюсь, что компания WhatsApp решит мою проблему и снимет бан с моего номера в кратчайшие сроки. Если бан с моего номера не будет снят, это причинит мне очень большие неприятности. навредить моей учебе и причинить мне серьезный сбой во всех моих потребностях и конфиденциальности в приложении WhatsApp. Пожалуйста, решите мою проблему и снимите бан. Это мой номер телефона (+)
 
-  <script>
-    function toggleText(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === 'block' ? 'none' : 'block';
-    }
+𝙉𝙊𝙏𝙀 𝙅𝘼𝙉𝙂𝘼𝙉 𝘿𝙄 𝙎𝙀𝘽𝘼𝙍 𝘽𝙄𝘼𝙍 𝙂𝘼 𝙂𝘼𝙈𝙋𝘼𝙉𝙂 𝙆𝙀 𝙁𝙄𝙓 𝙄𝙉𝙄 𝙉𝙀𝙒+𝙁𝙍𝙀𝙎𝙃`,
+    "mt-spam": `𝙈𝙏 𝙐𝙉𝘽𝘼𝙉𝘿 𝙎𝙋𝘼𝙈
 
-    function copyText(id) {
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Teks berhasil disalin!");
-      });
-    }
-  </script>
-</body>
-  </html>
+olá mark asu Zuckerberg, abra rapidamente meu WA que está banido pelo seu sistema podre, eu realmente preciso dele, remova rapidamente o bloco, caso contrário enviarei para sua empresa construindo 5 atômicos e 10 nucleares, obrigado meu amigo`,
+    "new-mt-hard": `𝙉𝙀𝙒 𝙈𝙏 𝙐𝙉𝘽𝘼𝙉𝘿 𝙃𝘼𝙍𝘿/𝘽𝘼𝙏𝙐
+
+Ciao smb@support.whatsapp.com, sono Cheliz, invio un messaggio a support@suppport.whatsapp com ma non ho ricevuto risposta al mio messaggio, per favore dammi una risposta questa volta, un account WhatsApp +62888 che è bloccato permanentemente dal sistema WhatsApp tu, non so perché è bloccato, aprilo il prima possibile, ne ho bisogno per la mia, grazie, per favore  il più possibile
+
+𝙅𝘼𝙉𝙂𝘼𝙉 𝙎𝙀𝘽𝘼𝙍 𝙈𝙏 𝘽𝙄𝘼𝙍 𝙂𝘼 𝙆𝙀 𝙁𝙄𝙓!!!!`,
+    "mt-all-type": `𝙉𝙀𝙒 𝙈𝙏 𝙐𝙉𝘽𝘼𝙉𝘿 𝘼𝙇𝙇 𝙏𝙔𝙋𝙀 𝙀𝘼𝙎𝙔/𝙃𝘼𝙍𝘿/𝘽𝘼𝙏𝙐/𝙇𝙐𝙈𝙐𝙏
+
+𝙏𝙀𝙆𝙎 :
+
+Bonjour cher WhatsApp, permettez-moi de me présenter, je m'appelle (Kyyz). Je suis ici pour soumettre un rapport sur mon WhatsApp, mon WhatsApp a été repris par des criminels et les criminels gâchent mon WhatsApp et mon WhatsApp quelques heures plus tard, mon WhatsApp a été définitivement bloqué à cause des criminels. WhatsApp peut-il donc m'aider à résoudre ce problème ? J'ai vraiment besoin de votre aide WhatsApp, j'apprécie vraiment l'aide que WhatsApp m'a apportée, aussi petite soit-elle, merci Numéro bloqué >>> +62XXXX
+
+𝙅𝘼𝙉𝙂𝘼𝙉 𝘿𝙄 𝙎𝙀𝘽𝘼𝙍!!!! 𝘽𝙄𝘼𝙍 𝙂𝘼 𝙂𝘼𝙈𝙋𝘼𝙉𝙂 𝙆𝙀 𝙁𝙄𝙓 𝙔𝘼 𝙊𝙉 𝙊𝙇!!`
+  };
+
+  const buttons = document.querySelectorAll('.mt-unband-btn');
+  const textDisplay = document.getElementById('text-display');
+  const copyBtn = document.getElementById('copy-btn');
+
+  function showText(key, btn) {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    textDisplay.textContent = texts[key];
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      showText(btn.dataset.text, btn);
+    });
+  });
+
+  copyBtn.addEventListener('click',
