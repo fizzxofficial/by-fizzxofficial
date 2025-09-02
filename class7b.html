@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Kelas 7B</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(#b3e5fc, #ffffff);
+    }
+    header {
+      background: #0288d1;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      background: #03a9f4;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .content-section {
+      display: none;
+      margin-top: 20px;
+    }
+    .active {
+      display: block;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+    }
+    .info-boxes {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .info-box {
+      background: #80deea;
+      flex: 1;
+      padding: 15px;
+      text-align: center;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    .org-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: 15px;
+    }
+    .org-box {
+      background: linear-gradient(135deg, #fff176, #b3e5fc);
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .student-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .student {
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .search-box {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    marquee {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #01579b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Class 7B</h1>
+    <p>SMPN 1 Bantarbolang (SPENSABA) Tahun Ajaran 2025-2026</p>
+    <div class="info-boxes">
+      <div class="info-box">32 Siswa</div>
+      <div class="info-box">13 Mata Pelajaran</div>
+    </div>
+    <marquee>SMPN 1 Bantarbolang (SPENSABA) • Tahun 2025-2026</marquee>
+  </header>
+
+  <nav>
+    <a onclick="showSection('siswa')">Siswa</a>
+    <a onclick="showSection('jadwal')">Jadwal Pelajaran</a>
+    <a onclick="showSection('pakaian')">Pakaian</a>
+    <a onclick="showSection('piket')">Piket Harian</a>
+    <a onclick="showSection('wali')">Wali Kelas</a>
+    <a onclick="showSection('organisasi')">Struktur Organisasi</a>
+  </nav>
+
+  <main>
+    <!-- SISWA -->
+    <section id="siswa" class="content-section active">
+      <h2>Daftar Siswa</h2>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Cari nama siswa..." onkeyup="searchStudent()">
+      </div>
+      <div class="student-list" id="studentList">
+        <!-- 32 siswa -->
+        <div class="student">Siswa 1</div>
+        <div class="student">Siswa 2</div>
+        <div class="student">Siswa 3</div>
+        <div class="student">Siswa 4</div>
+        <div class="student">Siswa 5</div>
+        <div class="student">Siswa 6</div>
+        <div class="student">Siswa 7</div>
+        <div class="student">Siswa 8</div>
+        <div class="student">Siswa 9</div>
+        <div class="student">Siswa 10</div>
+        <div class="student">Siswa 11</div>
+        <div class="student">Siswa 12</div>
+        <div class="student">Siswa 13</div>
+        <div class="student">Siswa 14</div>
+        <div class="student">Siswa 15</div>
+        <div class="student">Siswa 16</div>
+        <div class="student">Siswa 17</div>
+        <div class="student">Siswa 18</div>
+        <div class="student">Siswa 19</div>
+        <div class="student">Siswa 20</div>
+        <div class="student">Siswa 21</div>
+        <div class="student">Siswa 22</div>
+        <div class="student">Siswa 23</div>
+        <div class="student">Siswa 24</div>
+        <div class="student">Siswa 25</div>
+        <div class="student">Siswa 26</div>
+        <div class="student">Siswa 27</div>
+        <div class="student">Siswa 28</div>
+        <div class="student">Siswa 29</div>
+        <div class="student">Siswa 30</div>
+        <div class="student">Siswa 31</div>
+        <div class="student">Siswa 32</div>
+      </div>
+    </section>
+
+    <!-- JADWAL -->
+    <section id="jadwal" class="content-section">
+      <h2>Jadwal Pelajaran</h2>
+      <div class="card"><strong>Senin:</strong> Pendidikan Pancasila, Bahasa Indonesia, BK</div>
+      <div class="card"><strong>Selasa:</strong> IPS, IPA, Matematika, Bahasa Jawa</div>
+      <div class="card"><strong>Rabu:</strong> PWK, Bahasa Inggris, PJOK, Matematika</div>
+      <div class="card"><strong>Kamis:</strong> IPS, Bahasa Indonesia, Bahasa Inggris</div>
+      <div class="card"><strong>Jumat:</strong> IPA</div>
+      <div class="card"><strong>Sabtu:</strong> Informatika, Prakarya, PABP</div>
+    </section>
+
+    <!-- PAKAIAN -->
+    <section id="pakaian" class="content-section">
+      <h2>Pakaian</h2>
+      <div class="card"><strong>Senin:</strong> Osis</div>
+      <div class="card"><strong>Selasa:</strong> Osis</div>
+      <div class="card"><strong>Rabu:</strong> Batik & Olahraga</div>
+      <div class="card"><strong>Kamis:</strong> Batik</div>
+      <div class="card"><strong>Jumat:</strong> Pramuka</div>
+      <div class="card"><strong>Sabtu:</strong> Pramuka</div>
+    </section>
+
+    <!-- PIKET -->
+    <section id="piket" class="content-section">
+      <h2>Piket Harian</h2>
+      <div class="card"><strong>Senin:</strong> (isi manual)</div>
+      <div class="card"><strong>Selasa:</strong> (isi manual)</div>
+      <div class="card"><strong>Rabu:</strong> (isi manual)</div>
+      <div class="card"><strong>Kamis:</strong> (isi manual)</div>
+      <div class="card"><strong>Jumat:</strong> (isi manual)</div>
+      <div class="card"><strong>Sabtu:</strong> (isi manual)</div>
+    </section>
+
+    <!-- WALI KELAS -->
+    <section id="wali" class="content-section">
+      <h2>Wali Kelas</h2>
+      <div class="card">
+        <p><strong>Nama Wali Kelas:</strong> Pak Reynaldi Dwi R.</p>
+      </div>
+    </section>
+
+    <!-- STRUKTUR ORGANISASI -->
+    <section id="organisasi" class="content-section">
+      <h2>Struktur Organisasi Class 7B</h2>
+      <div class="org-boxes">
+        <div class="org-box">Ketua Kelas: (isi manual)</div>
+        <div class="org-box">Wakil Ketua: (isi manual)</div>
+        <div class="org-box">Sekretaris 1: (isi manual)</div>
+        <div class="org-box">Sekretaris 2: (isi manual)</div>
+        <div class="org-box">Bendahara 1: (isi manual)</div>
+        <div class="org-box">Bendahara 2: (isi manual)</div>
+        <div class="org-box">Keamanan 1: (isi manual)</div>
+        <div class="org-box">Keamanan 2: (isi manual)</div>
+        <div class="org-box">Kebersihan 1: (isi manual)</div>
+        <div class="org-box">Kebersihan 2: (isi manual)</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+    function searchStudent() {
+      let input = document.getElementById('searchInput').value.toLowerCase();
+      let students = document.querySelectorAll('#studentList .student');
+      students.forEach(stu => {
+        stu.style.display = stu.textContent.toLowerCase().includes(input) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+  </html>
