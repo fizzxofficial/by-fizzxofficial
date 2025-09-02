@@ -30,7 +30,7 @@
   body {
     margin: 0;
     font-family: 'Press Start 2P', cursive, monospace;
-    background: linear-gradient(270deg, #8b0000, #b22222, #8b0000);
+    background: linear-gradient(270deg, var(--red-dark), var(--red-light), var(--red-dark));
     background-size: 600% 600%;
     animation: bgMove 20s ease infinite;
     color: var(--white-dark);
@@ -176,7 +176,7 @@
 <!-- Logo langsung -->
 <img id="logo" src="https://autoresbot.com/tmp_files/0e0c62ec-31eb-4ddd-b308-04e46ec504cd.jpg" alt="Logo" />
 
-<h1>Welcome Gudang Mt Unband 𝙁𝙞𝙯𝙯𝙭 𝙊𝙛𝙛𝙞𝙘𝙞𝙖𝙡 </h1>
+<h1>Welcome Gudang Mt Unband</h1>
 <div id="subtitle">Di Sini Kalian Dapat Mengambil Mt Unband Untuk Membuka WhatsApp Yang Terkena Band/Kenon'</div>
 
 <div class="spacer-2"></div>
@@ -251,4 +251,18 @@ Bonjour cher WhatsApp, permettez-moi de me présenter, je m'appelle (Kyyz). Je s
     });
   });
 
-  copyBtn.addEventListener('click',
+  copyBtn.addEventListener('click', () => {
+    if (!textDisplay.textContent.trim()) {
+      alert('Silakan pilih salah satu tombol untuk menampilkan teks terlebih dahulu.');
+      return;
+    }
+    navigator.clipboard.writeText(textDisplay.textContent).then(() => {
+      alert('Teks berhasil disalin!');
+    }).catch(() => {
+      alert('Gagal menyalin teks.');
+    });
+  });
+</script>
+
+</body>
+</html>
