@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gudang Mt Unband</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(270deg, #8B0000, #B22222);
+      background-size: 400% 400%;
+      animation: moveBg 15s ease infinite;
+      color: #f5f5f5;
+      text-align: center;
+    }
+
+    @keyframes moveBg {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    header {
+      padding: 20px;
+    }
+
+    header img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 20px;
+      color: #fff;
+      margin: 0;
+    }
+
+    p.subtitle {
+      color: #ddd;
+      margin: 15px 0;
+      font-size: 14px;
+    }
+
+    .button {
+      display: block;
+      width: 80%;
+      margin: 15px auto;
+      padding: 15px;
+      background: #FF6F91;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 6px #B22222;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .button:active {
+      background: #8B0000;
+      box-shadow: 0 3px #600000;
+      transform: translateY(3px);
+    }
+
+    .hidden-text {
+      display: none;
+      margin: 15px auto;
+      width: 90%;
+      background: #FF6F91;
+      padding: 15px;
+      border-radius: 12px;
+      color: #fff;
+      white-space: pre-line;
+      text-align: left;
+      box-shadow: 0 6px #B22222;
+    }
+
+    .copy-btn {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: #B22222;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .social-icons {
+      margin: 30px 0 10px 0;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 15px;
+      font-size: 28px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #FF6F91;
+    }
+
+    footer {
+      margin: 20px 0;
+      font-size: 14px;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Ganti link src di bawah dengan link logo kamu -->
+    <img src="https://autoresbot.com/tmp_files/0e0c62ec-31eb-4ddd-b308-04e46ec504cd.jpg" alt="Logo">
+    <h1>Welcome Gudang Mt Unband</h1>
+    <p class="subtitle">Di Sini Kalian Dapat Mengambil Mt Unband Untuk Membuka WhatsApp Yang Terkena Band/Kenon'</p>
+  </header>
+
+  <!-- Tombol 1 -->
+  <button class="button" onclick="toggleText('text1')">Mt Unband Turki perma hard/batu</button>
+  <div id="text1" class="hidden-text">
+    𝙈𝙀𝙏𝙊𝘿𝙀 𝙐𝙉𝘽𝘼𝙉𝘿 𝙏𝙐𝙍𝙆𝙄 𝘽𝙐𝘼𝙏 𝙋𝙀𝙍𝙈𝘼 𝙃𝘼𝙍𝘿/𝘽𝘼𝙏𝙐 
+
+Здравствуйте, команда поддержки WhatsApp...
+    <button class="copy-btn" onclick="copyText('text1')">Copy</button>
+  </div>
+
+  <!-- Tombol 2 -->
+  <button class="button" onclick="toggleText('text2')">Mt Unband Spam</button>
+  <div id="text2" class="hidden-text">
+    𝙈𝙏 𝙐𝙉𝘽𝘼𝙉𝘿 𝙎𝙋𝘼𝙈
+
+olá mark asu Zuckerberg...
+    <button class="copy-btn" onclick="copyText('text2')">Copy</button>
+  </div>
+
+  <!-- Tombol 3 -->
+  <button class="button" onclick="toggleText('text3')">New Mt Unband Hard/Batu</button>
+  <div id="text3" class="hidden-text">
+    𝙉𝙀𝙒 𝙈𝙏 𝙐𝙉𝘽𝘼𝙉𝘿 𝙃𝘼𝙍𝘿/𝘽𝘼𝙏𝙐 
+
+Ciao smb@support.whatsapp.com...
+    <button class="copy-btn" onclick="copyText('text3')">Copy</button>
+  </div>
+
+  <!-- Tombol 4 -->
+  <button class="button" onclick="toggleText('text4')">Mt Unband All Type</button>
+  <div id="text4" class="hidden-text">
+    𝙉𝙀𝙒 𝙈𝙏 𝙐𝙉𝘽𝘼𝙉𝘿 𝘼𝙇𝙇 𝙏𝙔𝙋𝙀 𝙀𝘼𝙎𝙔/𝙃𝘼𝙍𝘿/𝘽𝘼𝙏𝙐/𝙇𝙐𝙈𝙐𝙏
+
+Bonjour cher WhatsApp...
+    <button class="copy-btn" onclick="copyText('text4')">Copy</button>
+  </div>
+
+  <!-- Social Media -->
+  <div class="social-icons">
+    <a href="https://whatsapp.com/channel/0029VbB9tFB5Ui2WUrPAsV2B"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://t.me/fizzxofficial"><i class="fab fa-telegram"></i></a>
+  </div>
+
+  <footer>
+    CREATOR : 𝙁𝙞𝙯𝙯𝙭 𝙊𝙛𝙛𝙞𝙘𝙞𝙖𝙡
+  </footer>
+
+  <script>
+    function toggleText(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function copyText(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Teks berhasil disalin!");
+      });
+    }
+  </script>
+</body>
+  </html>
