@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome Store Fizzx Official</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #00FFC6;
+    }
+    img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #00FFC6;
+      object-fit: cover;
+      margin-top: 1rem;
+    }
+    marquee {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #fff;
+      font-weight: bold;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.08);
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 600px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      text-align: left;
+    }
+    h2 {
+      color: #00FFC6;
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      line-height: 1.8;
+    }
+    ul li {
+      margin: 0.3rem 0;
+    }
+    a {
+      color: #00FFC6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .order-box {
+      background: rgba(0,0,0,0.2);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    select, input {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      width: 90%;
+      border-radius: 0.4rem;
+      border: none;
+    }
+    button {
+      background: #00FFC6;
+      color: #000;
+      font-weight: bold;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    footer {
+      margin: 2rem;
+      font-size: 0.8rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome Store Fizzx Official</h1>
+    <!-- Logo nanti diganti manual -->
+    <img src="LOGO_KAMU_DI_SINI" alt="Logo Fizzx Official">
+    <marquee>Fizzx Official Store</marquee>
+  </header>
+
+  <div class="container">
+    <h2>🛒 Layanan Fizzx Official</h2>
+    <ul>
+      <li>Sewa BOT whatsapp 🤖</li>
+      <li>Jadibot whatsapp 🪀</li>
+      <li>Murbot (Murid BOT) 💾</li>
+      <li>Nokos WhatsApp 🥏</li>
+      <li>Nokos Telegram 🗳</li>
+      <li>Panel Pterodactyl 📡</li>
+      <li>Jasa Run BOT 🌐</li>
+      <li>Jasa Unband WhatsApp 🔓</li>
+      <li>Jasa Band WhatsApp 🔐</li>
+      <li>Lain Lainnya 📦</li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <h2>📲 Media Sosial</h2>
+    <ul>
+      <li>📩 Telegram : <a href="https://t.me/fizzxofficial">Klik di sini</a></li>
+      <li>📱 Instagram : <a href="https://www.instagram.com/fizzx.44?igsh=MW91eDdtaHYzbmpkaQ==">Klik di sini</a></li>
+      <li>🎵 TikTok : <a href="https://www.tiktok.com/@manusia_44yyy?_t=ZS-8zQ0Jx5ZIXg&_r=1">Klik di sini</a></li>
+      <li>🪀 Saluran WhatsApp : <a href="https://whatsapp.com/channel/0029VbB9tFB5Ui2WUrPAsV2B">Klik di sini</a></li>
+      <li>📜 Testimoni : <a href="https://whatsapp.com/channel/0029VbBXduyFXUuVOlahRN2e">Klik di sini</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <h2>🛒 Jika Ingin Beli Langsung :</h2>
+    <p>Telegram ✉️ : <a href="https://t.me/fizzxofficial">t.me/fizzxofficial</a></p>
+    <p>Whatsapp 📌 : <span id="waNumber">[Nomor WhatsApp kamu di sini]</span></p>
+
+    <div class="order-box">
+      <p>Buat Pesanan 📝 :</p>
+      <select id="menu">
+        <option value="">-- Pilih Menu --</option>
+        <option>Sewa BOT WhatsApp</option>
+        <option>JadiBOT WhatsApp</option>
+        <option>Murbot (Murid BOT)</option>
+        <option>Nokos WhatsApp</option>
+        <option>Nokos Telegram</option>
+        <option>Panel Pterodactyl</option>
+        <option>Jasa Run BOT</option>
+        <option>Jasa Unband WhatsApp</option>
+        <option>Jasa Band WhatsApp</option>
+        <option>Lain Lainnya</option>
+      </select>
+      <br>
+      <input type="text" id="nomor" placeholder="Masukkan Nomor WhatsApp Anda">
+      <br>
+      <button onclick="kirimOrder()">Order 🎛️</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Fizzx Official Store. Web ini dibuat sendiri.
+  </footer>
+
+  <script>
+    function kirimOrder() {
+      let menu = document.getElementById("menu").value;
+      let nomor = document.getElementById("nomor").value;
+
+      if(menu === "" || nomor === ""){
+        alert("Harap isi menu dan nomor WhatsApp!");
+        return;
+      }
+
+      let pesan = `Ada Orderan Datang 📦%0A` +
+                  `Pembelian : ${menu}%0A` +
+                  `Nominal : (isi nominal sesuai harga)%0A` +
+                  `Dari : ${nomor}`;
+
+      // Dari 62882005238477 ke 62882005039337
+      let url = `https://wa.me/62882005039337?text=${pesan}`;
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+  </html>
