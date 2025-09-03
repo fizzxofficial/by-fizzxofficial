@@ -30,10 +30,21 @@
       object-fit: cover;
       margin-top: 1rem;
     }
-    marquee {
+    .marquee {
+      overflow: hidden;
+      white-space: nowrap;
       margin-top: 1rem;
+    }
+    .marquee p {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 12s linear infinite;
       font-weight: bold;
       color: #FFD700;
+    }
+    @keyframes marquee {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
     }
     .container {
       background: rgba(255, 255, 255, 0.08);
@@ -48,66 +59,54 @@
       text-align: center;
       color: #00FFC6;
     }
-    .accordion {
-      background: rgba(0,0,0,0.3);
-      color: #fff;
-      cursor: pointer;
-      padding: 1rem;
-      width: 100%;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 0.5rem;
-      margin: 0.3rem 0;
-      transition: background 0.3s;
-    }
-    .accordion:hover {
-      background: rgba(0,0,0,0.5);
-    }
-    .panel {
-      padding: 0 1rem;
-      display: none;
+    details {
       background: rgba(255,255,255,0.05);
+      padding: 1rem;
+      margin: 0.5rem 0;
       border-radius: 0.5rem;
-      margin-bottom: 0.5rem;
+      cursor: pointer;
     }
-    .panel p {
-      margin: 0.5rem 0;
-      font-size: 0.95rem;
-    }
-    .social a {
-      display: block;
-      margin: 0.5rem 0;
-      color: #00FFC6;
-      text-decoration: none;
+    details summary {
       font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    details p {
+      margin: 0.5rem 0 0;
+      font-size: 0.95rem;
+      white-space: pre-line;
+    }
+    .social {
+      margin-top: 2rem;
+    }
+    .social p {
+      font-size: 1rem;
+      margin: 0.5rem 0;
     }
     .order-box {
       margin-top: 2rem;
-      background: rgba(255,255,255,0.08);
       padding: 1rem;
-      border-radius: 1rem;
+      background: rgba(0,0,0,0.4);
+      border-radius: 0.5rem;
+      text-align: center;
     }
-    .order-box input, .order-box select {
-      width: 90%;
+    .order-box select, 
+    .order-box input {
       padding: 0.5rem;
       margin: 0.5rem 0;
+      width: 90%;
       border-radius: 0.5rem;
       border: none;
     }
     .order-box button {
+      padding: 0.7rem 1.5rem;
+      margin-top: 0.5rem;
       background: #00FFC6;
       border: none;
-      padding: 0.7rem 1.5rem;
-      border-radius: 0.5rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .order-box button:hover {
-      background: #fff;
       color: #000;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      cursor: pointer;
     }
     footer {
       margin: 2rem;
@@ -121,135 +120,164 @@
 
   <header>
     <h1>Welcome Store Fizzx Official</h1>
-    <img src="LINK_LOGO_KAMU" alt="Logo Fizzx">
-    <marquee>Fizzx Official Store</marquee>
+    <img src="link-logo-mu" alt="Logo Fizzx">
+    <div class="marquee">
+      <p>✨ Fizzx Official Store © 2025 ⚡⚡ ✨</p>
+    </div>
   </header>
 
   <div class="container">
     <h2>🛒 Layanan Fizzx Official</h2>
 
-    <!-- Accordion Menu -->
-    <button class="accordion">Sewa BOT WhatsApp 🤖</button>
-    <div class="panel">
-      <p>𝐋𝐈𝐒𝐓 𝐒𝐄𝐖𝐀 𝐁𝐎𝐓 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒</p>
-      <p>• 1 Minggu : 5k</p>
-      <p>• 1 Bulan : 6k</p>
-      <p>• 40 Hari : 10k</p>
-      <p>• 2 Bulan : 15k</p>
-      <p>• Permanent Pribadi : 18k</p>
-      <p>• Permanent Private : 24k</p>
-    </div>
+    <details>
+      <summary>Sewa BOT WhatsApp 🤖</summary>
+      <p>
+𝐋𝐈𝐒𝐓 𝐒𝐄𝐖𝐀 𝐁𝐎𝐓 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒
 
-    <button class="accordion">Jadibot WhatsApp 🪀</button>
-    <div class="panel">
-      <p>𝐋𝐈𝐒𝐓 𝐉𝐀𝐃𝐈𝐁𝐎𝐓 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒</p>
-      <p>• Jadibot Biasa : 13k</p>
-      <p>• Jadibot + Owner : 18k</p>
-    </div>
+• 1 𝙈𝙞𝙣𝙜𝙜𝙪 : 5𝙠
+• 1 𝘽𝙪𝙡𝙖𝙣 : 6𝙠
+• 40 𝙃𝙖𝙧𝙞 : 10𝙠
+• 2 𝘽𝙪𝙡𝙖𝙣 : 15𝙠
+• 𝙋𝙚𝙧𝙢𝙖𝙣𝙚𝙣𝙩 𝙋𝙧𝙞𝙗𝙖𝙙𝙞 : 18𝙠
+• 𝙋𝙚𝙧𝙢𝙖𝙣𝙚𝙣𝙩 𝙋𝙧𝙞𝙫𝙖𝙩𝙚 : 24𝙠
+      </p>
+    </details>
 
-    <button class="accordion">Murbot (Murid BOT) 💾</button>
-    <div class="panel">
-      <p>𝐋𝐈𝐒𝐓 𝐌𝐔𝐑𝐁𝐎𝐓 (𝐌𝐔𝐑𝐈𝐃 𝐁𝐎𝐓) 🛒</p>
-      <p>• Murbot Private : 7k</p>
-      <p>• Murbot Public : 14k</p>
-      <p>Benefit? Tanyakan saja.</p>
-    </div>
+    <details>
+      <summary>Jadibot WhatsApp 🪀</summary>
+      <p>
+𝐋𝐈𝐒𝐓 𝐉𝐀𝐃𝐈𝐁𝐎𝐓 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒
 
-    <button class="accordion">Nokos WhatsApp 🥏</button>
-    <div class="panel">
-      <p>𝐋𝐈𝐒𝐓 𝐍𝐎𝐊𝐎𝐒 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒</p>
-      <p>+62 Indo : 4k (sv 5 hari)</p>
-      <p>+7 Russia : 16k (sv 6 hari)</p>
-      <p>+63 Filipina : 5k (sv 5 hari)</p>
-      <p>+60 Malaysia : 12,5k (sv 7 hari)</p>
-      <p>+48 Polandia : 21k (sv 7 hari)</p>
-      <p>+44 Inggris : 15k (sv 5 hari)</p>
-      <p>+98 Iran : 25k (sv 4 hari)</p>
-      <p>+1 Amerika : 12k (sv 7 hari)</p>
-      <p>+93 Afganistan : 10k (sv 5 hari)</p>
-      <p>Dan lainnya...</p>
-    </div>
+𝙅𝙖𝙙𝙞𝙗𝙤𝙩 𝘽𝙞𝙖𝙨𝙖 : 13𝙠
+𝙅𝙖𝙙𝙞𝙗𝙤𝙩 + 𝙊𝙬𝙣𝙚𝙧 : 18𝙠
+      </p>
+    </details>
 
-    <button class="accordion">Nokos Telegram 🗳</button>
-    <div class="panel">
-      <p>𝐋𝐈𝐒𝐓 𝐍𝐎𝐊𝐎𝐒 𝐓𝐄𝐋𝐄𝐆𝐑𝐀𝐌 🛒</p>
-      <p>+62 Indo : 4k</p>
-      <p>Dan lainnya...</p>
-    </div>
+    <details>
+      <summary>Murbot (Murid BOT) 💾</summary>
+      <p>
+𝐋𝐈𝐒𝐓 𝐌𝐔𝐑𝐁𝐎𝐓 (𝐌𝐔𝐑𝐈𝐃 𝐁𝐎𝐓) 🛒
 
-    <button class="accordion">Panel Pterodactyl 📡</button>
-    <div class="panel">
-      <p>𝑳𝑰𝑺𝑻 𝑷𝑨𝑵𝑬𝑳 𝑷𝑻𝑬𝑹𝑶𝑫𝑨𝑪𝑻𝒀𝑳 🛒</p>
-      <p>• 5GB ➩ 1k</p>
-      <p>• 6GB ➩ 2k</p>
-      <p>• 7GB ➩ 3k</p>
-      <p>• 8GB ➩ 4k</p>
-      <p>• 9GB ➩ 5k</p>
-      <p>• 10GB ➩ 6k</p>
-      <p>• UNLI ➩ 7k</p>
-    </div>
+• 𝙈𝙪𝙧𝙗𝙤𝙩 𝙋𝙧𝙞𝙫𝙖𝙩𝙚 : 7𝙠
+• 𝙈𝙪𝙧𝙗𝙤𝙩 𝙋𝙪𝙗𝙡𝙞𝙘 : 14𝙠
+ʙᴇɴᴇғɪᴛ? ᴛᴀɴʏᴀᴋᴀɴ sᴀᴊᴀ.
+      </p>
+    </details>
 
-    <button class="accordion">Jasa Run BOT 🌐</button>
-    <div class="panel">
-      <p>𝐉𝐀𝐒𝐀 𝐑𝐔𝐍 𝐁𝐎𝐓 🛒</p>
-      <p>1× Run BOT + Script : 2k (free run 1x)</p>
-    </div>
+    <details>
+      <summary>Nokos WhatsApp 🥏</summary>
+      <p>
+𝐋𝐈𝐒𝐓 𝐍𝐎𝐊𝐎𝐒 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒
 
-    <button class="accordion">Jasa Unband WhatsApp 🔓</button>
-    <div class="panel">
-      <p>𝐔𝐍𝐁𝐀𝐍𝐃 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒</p>
-      <p>Unband Spam : 10k</p>
-      <p>Unband Perma : 20k</p>
-      <p>Unband Perma Batu : 30k</p>
-      <p><i>Note: Jika gagal uang kembali</i></p>
-    </div>
++62 𝙄𝙣𝙙𝙤 : 4𝙠, 𝙨𝙫 5 𝙝𝙖𝙧𝙞
++7 𝙍𝙪𝙨𝙨𝙞𝙖 : 16𝙠, 𝙨𝙫 6 𝙝𝙖𝙧𝙞
++63 𝙁𝙞𝙡𝙞𝙥𝙞𝙣𝙖 : 5𝙠, 𝙨𝙫 5 𝙝𝙖𝙧𝙞
++60 𝙈𝙖𝙡𝙖𝙮𝙨𝙞𝙖 : 12,5𝙠, 𝙨𝙫 7 𝙝𝙖𝙧𝙞
++48 𝙋𝙤𝙡𝙖𝙣𝙙𝙞𝙖 : 21𝙠, 𝙨𝙫 7 𝙝𝙖𝙧𝙞
++44 𝙄𝙣𝙜𝙜𝙧𝙞𝙨 : 15𝙠, 𝙨𝙫 5 𝙝𝙖𝙧𝙞
++98 𝙄𝙧𝙖𝙣 : 25𝙠, 𝙨𝙫 4 𝙝𝙖𝙧𝙞
++1 𝘼𝙢𝙚𝙧𝙞𝙠𝙖 : 12𝙠, 𝙨𝙫 7 𝙝𝙖𝙧𝙞
++93 𝘼𝙛𝙜𝙖𝙣𝙞𝙨𝙩𝙖𝙣 : 10𝙠, 𝙨𝙫 5 𝙝𝙖𝙧𝙞
+ᴅᴀɴ ʟᴀɪɴ ʟᴀɪɴ, ᴍᴀsɪʜ ʙᴀɴʏᴀᴋ ʟᴀɢɪ.
+      </p>
+    </details>
 
-    <button class="accordion">Jasa Band WhatsApp 🔐</button>
-    <div class="panel">
-      <p>𝐁𝐀𝐍𝐃 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒</p>
-      <p>Band Per Nomor : 5k</p>
-    </div>
+    <details>
+      <summary>Nokos Telegram 🗳</summary>
+      <p>
+𝐋𝐈𝐒𝐓 𝐍𝐎𝐊𝐎𝐒 𝐓𝐄𝐋𝐄𝐆𝐑𝐀𝐌 🛒
 
-    <button class="accordion">Lain Lainnya 📦</button>
-    <div class="panel">
-      <p>𝐋𝐀𝐈𝐍 𝐋𝐀𝐈𝐍𝐍𝐘𝐀 🛒</p>
-      <p>RESS PANEL ➩ 7k</p>
-      <p>ADMIN PANEL ➩ 12k</p>
-      <p>PT PANEL ➩ 15k</p>
-    </div>
++62 𝙄𝙣𝙙𝙤 : 4𝙠
+ᴅᴀɴ ʟᴀɪɴ ʟᴀɪɴ, ᴛᴀɴʏᴀᴋᴀɴ sᴀᴊᴀ.
+      </p>
+    </details>
 
-    <h2>📲 Media Sosial</h2>
+    <details>
+      <summary>Panel Pterodactyl 📡</summary>
+      <p>
+𝑳𝑰𝑺𝑻 𝑷𝑨𝑵𝑬𝑳 𝑷𝑻𝑬𝑹𝑶𝑫𝑨𝑪𝑻𝒀𝑳 🛒
+
+• ➥ 📦 5GB ➩ 1K 💸
+• ➥ 📦 6GB ➩ 2K 💸
+• ➥ 📦 7GB ➩ 3K 💸
+• ➥ 📦 8GB ➩ 4K 💸
+• ➥ 📦 9GB ➩ 5K 💸
+• ➥ 📦 10GB ➩ 6K 💸
+• ➥ 📦 UNLI ➩ 7K 💸
+      </p>
+    </details>
+
+    <details>
+      <summary>Jasa Run BOT 🌐</summary>
+      <p>
+𝐉𝐀𝐒𝐀 𝐑𝐔𝐍 𝐁𝐎𝐓 🛒
+
+1× 𝙍𝙪𝙣 𝘽𝙊𝙏 + 𝙎𝙘𝙧𝙞𝙥𝙩 : 2𝙠
+𝙛𝙧𝙚𝙚 𝙧𝙪𝙣 1×
+      </p>
+    </details>
+
+    <details>
+      <summary>Jasa Unband WhatsApp 🔓</summary>
+      <p>
+𝐔𝐍𝐁𝐀𝐍𝐃 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒
+
+𝙐𝙣𝙗𝙖𝙣𝙙 𝙨𝙥𝙖𝙢 : 10𝙠
+𝙐𝙣𝙗𝙖𝙣𝙙 𝙋𝙚𝙧𝙢𝙖 : 20𝙠
+𝙐𝙣𝙗𝙖𝙣𝙙 𝙋𝙚𝙧𝙢𝙖 𝘽𝙖𝙩𝙪 : 30𝙠
+      </p>
+    </details>
+
+    <details>
+      <summary>Jasa Band WhatsApp 🔐</summary>
+      <p>
+𝐁𝐀𝐍𝐃 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒
+
+𝘽𝙖𝙣𝙙 𝙋𝙚𝙧 𝙣𝙤𝙢𝙤𝙧 : 5𝙠
+      </p>
+    </details>
+
+    <details>
+      <summary>Lain Lainnya 📦</summary>
+      <p>
+𝐋𝐀𝐈𝐍 𝐋𝐀𝐈𝐍𝐍𝐘𝐀 🛒
+
+• ➼ 💾 RESS PANEL ➩ 7K 💸
+• ➼ 💾 ADMIN PANEL ➩ 12K 💸
+• ➼ 💾 PT PANEL ➩ 15K 💸
+      </p>
+    </details>
+
     <div class="social">
-      <a href="https://t.me/fizzxofficial">📩 Telegram</a>
-      <a href="https://www.instagram.com/fizzx.44?igsh=MW91eDdtaHYzbmpkaQ==">📱 Instagram</a>
-      <a href="https://www.tiktok.com/@manusia_44yyy?_t=ZS-8zQ0Jx5ZIXg&_r=1">🎵 TikTok</a>
-      <a href="https://whatsapp.com/channel/0029VbB9tFB5Ui2WUrPAsV2B">🪀 Saluran WhatsApp</a>
-      <a href="https://whatsapp.com/channel/0029VbBXduyFXUuVOlahRN2e">📜 Testimoni</a>
+      <h2>📲 Media Sosial</h2>
+      <p>📩 Telegram : <a href="https://t.me/fizzxofficial" target="_blank">t.me/fizzxofficial</a></p>
+      <p>📱 Instagram : <a href="https://www.instagram.com/fizzx.44" target="_blank">@fizzx.44</a></p>
+      <p>🎵 TikTok : <a href="https://www.tiktok.com/@manusia_44yyy" target="_blank">@manusia_44yyy</a></p>
+      <p>🪀 Saluran WhatsApp : <a href="https://whatsapp.com/channel/0029VbB9tFB5Ui2WUrPAsV2B" target="_blank">Channel Fizzx</a></p>
+      <p>📜 Testimoni : <a href="https://whatsapp.com/channel/0029VbBXduyFXUuVOlahRN2e" target="_blank">Channel Testimoni</a></p>
     </div>
 
     <div class="order-box">
-      <h3>🛒 Jika Ingin Beli Langsung :</h3>
-      <p>Telegram ✉️ : <a href="https://t.me/fizzxofficial">t.me/fizzxofficial</a></p>
-      <p>WhatsApp 📌 : <span id="waPlaceholder">Isi nomor disini</span></p>
-      <form id="orderForm">
-        <label>Menu yang di pesan:</label><br>
-        <select id="menuPesan" required>
-          <option value="">-- Pilih Menu --</option>
-          <option>Sewa BOT WhatsApp</option>
-          <option>Jadibot WhatsApp</option>
-          <option>Murbot</option>
-          <option>Nokos WhatsApp</option>
-          <option>Nokos Telegram</option>
-          <option>Panel Pterodactyl</option>
-          <option>Jasa Run BOT</option>
-          <option>Jasa Unband WhatsApp</option>
-          <option>Jasa Band WhatsApp</option>
-          <option>Lain Lainnya</option>
-        </select><br>
-        <label>Nomor WhatsApp Anda:</label><br>
-        <input type="text" id="nomorWa" placeholder="+62xxxxxxxxx" required><br>
-        <button type="submit">Order 🎛️</button>
-      </form>
+      <h2>🛒 Jika Ingin Beli Langsung :</h2>
+      <p>Telegram ✉️ : <a href="https://t.me/fizzxofficial" target="_blank">t.me/fizzxofficial</a></p>
+      <p>Whatsapp 📌 : <span id="wa-number">[Isi nomor WA manual]</span></p>
+      
+      <h3>Buat Pesanan 📝</h3>
+      <select id="menu">
+        <option value="">Pilih Menu</option>
+        <option>Sewa BOT WhatsApp</option>
+        <option>Jadibot WhatsApp</option>
+        <option>Murbot</option>
+        <option>Nokos WhatsApp</option>
+        <option>Nokos Telegram</option>
+        <option>Panel Pterodactyl</option>
+        <option>Jasa Run BOT</option>
+        <option>Jasa Unband WhatsApp</option>
+        <option>Jasa Band WhatsApp</option>
+        <option>Lain Lainnya</option>
+      </select>
+      <input type="text" id="nomorwa" placeholder="Masukkan Nomor WhatsApp Anda"/>
+      <button onclick="kirimOrder()">Order 🎛️</button>
     </div>
   </div>
 
@@ -257,27 +285,21 @@
     &copy; 2025 Fizzx Official Store.
   </footer>
 
-  <script>
-    // Accordion
-    const acc = document.getElementsByClassName("accordion");
-    for (let i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        const panel = this.nextElementSibling;
-        panel.style.display = panel.style.display === "block" ? "none" : "block";
-      });
-    }
-
-    // Order WhatsApp Auto-send
-    document.getElementById("orderForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const menu = document.getElementById("menuPesan").value;
-      const nomor = document.getElementById("nomorWa").value;
-      const pesan = `Ada Orderan Datang 📦%0A%0APembelian : ${menu}%0ANominal : (Isi sesuai harga)%0ADari : ${nomor}`;
-      const link = `https://wa.me/62882005039337?text=${pesan}`;
-      window.open(link, "_blank");
-    });
-  </script>
+<script>
+function kirimOrder(){
+  let menu = document.getElementById("menu").value;
+  let nomor = document.getElementById("nomorwa").value;
+  if(menu==="" || nomor===""){
+    alert("Harap pilih menu dan isi nomor WhatsApp!");
+    return;
+  }
+  let pesan = `Ada Orderan Datang 📦%0A`+
+              `Pembelian : ${menu}%0A`+
+              `Dari : ${nomor}`;
+  let url = `https://wa.me/62882005238477?text=${pesan}`;
+  window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>
