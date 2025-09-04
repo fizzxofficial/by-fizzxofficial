@@ -9,13 +9,24 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      background: linear-gradient(135deg, #1f1c2c, #928dab, #1f1c2c);
+      background-size: 300% 300%;
+      animation: gradientMove 10s ease infinite;
       color: #fff;
       text-align: center;
       overflow-x: hidden;
     }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     header {
       padding: 2rem;
+      animation: fadeDown 1.5s ease forwards;
+      opacity: 0;
     }
     h1 {
       font-size: 2rem;
@@ -28,91 +39,111 @@
       border-radius: 50%;
       border: 4px solid #00FFC6;
       object-fit: cover;
-      margin-top: 1rem;
+      margin: 1rem 0;
     }
-    .marquee {
-      overflow: hidden;
-      white-space: nowrap;
-      margin-top: 1rem;
-    }
-    .marquee p {
-      display: inline-block;
-      padding-left: 100%;
-      animation: marquee 12s linear infinite;
+    marquee {
       font-weight: bold;
-      color: #FFD700;
+      color: #fff;
     }
-    @keyframes marquee {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-100%, 0); }
-    }
+
     .container {
       background: rgba(255, 255, 255, 0.08);
       margin: 2rem auto;
       padding: 2rem;
       border-radius: 1rem;
-      max-width: 700px;
+      max-width: 650px;
       box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      text-align: left;
+      animation: fadeUp 1.5s ease forwards;
+      opacity: 0;
     }
+
     h2 {
-      text-align: center;
       color: #00FFC6;
+      margin-bottom: 1rem;
     }
-    details {
-      background: rgba(255,255,255,0.05);
-      padding: 1rem;
+
+    .menu-list button {
+      display: block;
+      width: 100%;
       margin: 0.5rem 0;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
-    details summary {
-      font-weight: bold;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-    details p {
-      margin: 0.5rem 0 0;
-      font-size: 0.95rem;
-      white-space: pre-line;
-    }
-    .social {
-      margin-top: 2rem;
-    }
-    .social p {
-      font-size: 1rem;
-      margin: 0.5rem 0;
-    }
-    .order-box {
-      margin-top: 2rem;
-      padding: 1rem;
-      background: rgba(0,0,0,0.4);
-      border-radius: 0.5rem;
-      text-align: center;
-    }
-    .order-box select, 
-    .order-box input {
-      padding: 0.5rem;
-      margin: 0.5rem 0;
-      width: 90%;
-      border-radius: 0.5rem;
-      border: none;
-    }
-    .order-box button {
-      padding: 0.7rem 1.5rem;
-      margin-top: 0.5rem;
+      padding: 0.8rem;
       background: #00FFC6;
-      border: none;
       color: #000;
       font-weight: bold;
+      border: none;
       border-radius: 0.5rem;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
+
+    .menu-list button:hover {
+      background: #00cc99;
+      transform: scale(1.02);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background: #1f1c2c;
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 600px;
+      color: #fff;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .close {
+      color: #00FFC6;
+      float: right;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #fff;
+    }
+
+    /* Media Sosial */
+    .social-links a {
+      display: block;
+      margin: 0.8rem 0;
+      font-size: 1.1rem;
+      color: #00FFC6;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* Footer */
     footer {
       margin: 2rem;
       font-size: 0.9rem;
       color: #ccc;
-      text-align: center;
+    }
+    .buy-buttons {
+      margin-top: 1rem;
+    }
+    .buy-buttons a {
+      font-size: 2rem;
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #00FFC6;
+    }
+
+    @keyframes fadeDown {
+      0% { transform: translateY(-30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
   </style>
 </head>
@@ -120,186 +151,148 @@
 
   <header>
     <h1>Welcome Store Fizzx Official</h1>
-    <img src="https://autoresbot.com/tmp_files/926d3f6a-a779-4510-aaa0-da9b452d0966.jpg" alt="Logo Fizzx">
-    <div class="marquee">
-      <p>Fizzx Official Store ©2025 ⚡⚡⚡</p>
-    </div>
+    <!-- Ganti src dengan link logo kamu -->
+    <img src="https://autoresbot.com/tmp_files/926d3f6a-a779-4510-aaa0-da9b452d0966.jpg" alt="Logo Fizzx Official">
+    <marquee>Fizzx Official Store ©2025 ⚡⚡⚡</marquee>
   </header>
 
   <div class="container">
     <h2>🛒 Layanan Fizzx Official</h2>
-
-    <details>
-      <summary>Sewa BOT WhatsApp 🤖</summary>
-      <p>
-𝐋𝐈𝐒𝐓 𝐒𝐄𝐖𝐀 𝐁𝐎𝐓 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒
-
-• 1 𝙈𝙞𝙣𝙜𝙜𝙪 : 5𝙠
-• 1 𝘽𝙪𝙡𝙖𝙣 : 6𝙠
-• 40 𝙃𝙖𝙧𝙞 : 10𝙠
-• 2 𝘽𝙪𝙡𝙖𝙣 : 15𝙠
-• 𝙋𝙚𝙧𝙢𝙖𝙣𝙚𝙣𝙩 𝙋𝙧𝙞𝙗𝙖𝙙𝙞 : 18𝙠
-• 𝙋𝙚𝙧𝙢𝙖𝙣𝙚𝙣𝙩 𝙋𝙧𝙞𝙫𝙖𝙩𝙚 : 24𝙠
-      </p>
-    </details>
-
-    <details>
-      <summary>Jadibot WhatsApp 🪀</summary>
-      <p>
-𝐋𝐈𝐒𝐓 𝐉𝐀𝐃𝐈𝐁𝐎𝐓 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒
-
-𝙅𝙖𝙙𝙞𝙗𝙤𝙩 𝘽𝙞𝙖𝙨𝙖 : 13𝙠
-𝙅𝙖𝙙𝙞𝙗𝙤𝙩 + 𝙊𝙬𝙣𝙚𝙧 : 18𝙠
-      </p>
-    </details>
-
-    <details>
-      <summary>Murbot (Murid BOT) 💾</summary>
-      <p>
-𝐋𝐈𝐒𝐓 𝐌𝐔𝐑𝐁𝐎𝐓 (𝐌𝐔𝐑𝐈𝐃 𝐁𝐎𝐓) 🛒
-
-• 𝙈𝙪𝙧𝙗𝙤𝙩 𝙋𝙧𝙞𝙫𝙖𝙩𝙚 : 7𝙠
-• 𝙈𝙪𝙧𝙗𝙤𝙩 𝙋𝙪𝙗𝙡𝙞𝙘 : 14𝙠
-ʙᴇɴᴇғɪᴛ? ᴛᴀɴʏᴀᴋᴀɴ sᴀᴊᴀ.
-      </p>
-    </details>
-
-    <details>
-      <summary>Nokos WhatsApp 🥏</summary>
-      <p>
-𝐋𝐈𝐒𝐓 𝐍𝐎𝐊𝐎𝐒 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒
-
-+62 𝙄𝙣𝙙𝙤 : 4𝙠, 𝙨𝙫 5 𝙝𝙖𝙧𝙞
-+7 𝙍𝙪𝙨𝙨𝙞𝙖 : 16𝙠, 𝙨𝙫 6 𝙝𝙖𝙧𝙞
-+63 𝙁𝙞𝙡𝙞𝙥𝙞𝙣𝙖 : 5𝙠, 𝙨𝙫 5 𝙝𝙖𝙧𝙞
-+60 𝙈𝙖𝙡𝙖𝙮𝙨𝙞𝙖 : 12,5𝙠, 𝙨𝙫 7 𝙝𝙖𝙧𝙞
-+48 𝙋𝙤𝙡𝙖𝙣𝙙𝙞𝙖 : 21𝙠, 𝙨𝙫 7 𝙝𝙖𝙧𝙞
-+44 𝙄𝙣𝙜𝙜𝙧𝙞𝙨 : 15𝙠, 𝙨𝙫 5 𝙝𝙖𝙧𝙞
-+98 𝙄𝙧𝙖𝙣 : 25𝙠, 𝙨𝙫 4 𝙝𝙖𝙧𝙞
-+1 𝘼𝙢𝙚𝙧𝙞𝙠𝙖 : 12𝙠, 𝙨𝙫 7 𝙝𝙖𝙧𝙞
-+93 𝘼𝙛𝙜𝙖𝙣𝙞𝙨𝙩𝙖𝙣 : 10𝙠, 𝙨𝙫 5 𝙝𝙖𝙧𝙞
-ᴅᴀɴ ʟᴀɪɴ ʟᴀɪɴ, ᴍᴀsɪʜ ʙᴀɴʏᴀᴋ ʟᴀɢɪ.
-      </p>
-    </details>
-
-    <details>
-      <summary>Nokos Telegram 🗳</summary>
-      <p>
-𝐋𝐈𝐒𝐓 𝐍𝐎𝐊𝐎𝐒 𝐓𝐄𝐋𝐄𝐆𝐑𝐀𝐌 🛒
-
-+62 𝙄𝙣𝙙𝙤 : 4𝙠
-ᴅᴀɴ ʟᴀɪɴ ʟᴀɪɴ, ᴛᴀɴʏᴀᴋᴀɴ sᴀᴊᴀ.
-      </p>
-    </details>
-
-    <details>
-      <summary>Panel Pterodactyl 📡</summary>
-      <p>
-𝑳𝑰𝑺𝑻 𝑷𝑨𝑵𝑬𝑳 𝑷𝑻𝑬𝑹𝑶𝑫𝑨𝑪𝑻𝒀𝑳 🛒
-
-• ➥ 📦 5GB ➩ 1K 💸
-• ➥ 📦 6GB ➩ 2K 💸
-• ➥ 📦 7GB ➩ 3K 💸
-• ➥ 📦 8GB ➩ 4K 💸
-• ➥ 📦 9GB ➩ 5K 💸
-• ➥ 📦 10GB ➩ 6K 💸
-• ➥ 📦 UNLI ➩ 7K 💸
-      </p>
-    </details>
-
-    <details>
-      <summary>Jasa Run BOT 🌐</summary>
-      <p>
-𝐉𝐀𝐒𝐀 𝐑𝐔𝐍 𝐁𝐎𝐓 🛒
-
-1× 𝙍𝙪𝙣 𝘽𝙊𝙏 + 𝙎𝙘𝙧𝙞𝙥𝙩 : 2𝙠
-𝙛𝙧𝙚𝙚 𝙧𝙪𝙣 1×
-      </p>
-    </details>
-
-    <details>
-      <summary>Jasa Unband WhatsApp 🔓</summary>
-      <p>
-𝐔𝐍𝐁𝐀𝐍𝐃 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒
-
-𝙐𝙣𝙗𝙖𝙣𝙙 𝙨𝙥𝙖𝙢 : 10𝙠
-𝙐𝙣𝙗𝙖𝙣𝙙 𝙋𝙚𝙧𝙢𝙖 : 20𝙠
-𝙐𝙣𝙗𝙖𝙣𝙙 𝙋𝙚𝙧𝙢𝙖 𝘽𝙖𝙩𝙪 : 30𝙠
-      </p>
-    </details>
-
-    <details>
-      <summary>Jasa Band WhatsApp 🔐</summary>
-      <p>
-𝐁𝐀𝐍𝐃 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒
-
-𝘽𝙖𝙣𝙙 𝙋𝙚𝙧 𝙣𝙤𝙢𝙤𝙧 : 5𝙠
-      </p>
-    </details>
-
-    <details>
-      <summary>Lain Lainnya 📦</summary>
-      <p>
-𝐋𝐀𝐈𝐍 𝐋𝐀𝐈𝐍𝐍𝐘𝐀 🛒
-
-• ➼ 💾 RESS PANEL ➩ 7K 💸
-• ➼ 💾 ADMIN PANEL ➩ 12K 💸
-• ➼ 💾 PT PANEL ➩ 15K 💸
-      </p>
-    </details>
-
-    <div class="social">
-      <h2>📲 Media Sosial</h2>
-      <p>📩 Telegram : <a href="https://t.me/fizzxofficial" target="_blank">t.me/fizzxofficial</a></p>
-      <p>📱 Instagram : <a href="https://www.instagram.com/fizzx.44" target="_blank">@fizzx.44</a></p>
-      <p>🎵 TikTok : <a href="https://www.tiktok.com/@manusia_44yyy" target="_blank">@manusia_44yyy</a></p>
-      <p>🪀 Saluran WhatsApp : <a href="https://whatsapp.com/channel/0029VbB9tFB5Ui2WUrPAsV2B" target="_blank">Channel Fizzx</a></p>
-      <p>📜 Testimoni : <a href="https://whatsapp.com/channel/0029VbBXduyFXUuVOlahRN2e" target="_blank">Channel Testimoni</a></p>
+    <div class="menu-list">
+      <button onclick="openModal('sewa')">Sewa BOT WhatsApp 🤖</button>
+      <button onclick="openModal('jadibot')">Jadibot WhatsApp 🪀</button>
+      <button onclick="openModal('murbot')">Murbot (Murid BOT) 💾</button>
+      <button onclick="openModal('nokoswa')">Nokos WhatsApp 🥏</button>
+      <button onclick="openModal('nokostg')">Nokos Telegram 🗳</button>
+      <button onclick="openModal('panel')">Panel Pterodactyl 📡</button>
+      <button onclick="openModal('runbot')">Jasa Run BOT 🌐</button>
+      <button onclick="openModal('unband')">Jasa Unband WhatsApp 🔓</button>
+      <button onclick="openModal('band')">Jasa Band WhatsApp 🔐</button>
+      <button onclick="openModal('website')">Pembuatan Website 💻</button>
+      <button onclick="openModal('lain')">Lain Lainnya 📦</button>
     </div>
+  </div>
 
-    <div class="order-box">
-      <h2>🛒 Jika Ingin Beli Langsung :</h2>
-      <p>Telegram ✉️ : <a href="https://t.me/fizzxofficial" target="_blank">t.me/fizzxofficial</a></p>
-      <p>Whatsapp 📌 : <span id="wa-number">[Isi nomor WA manual]</span></p>
-      
-      <h3>Buat Pesanan 📝</h3>
-      <select id="menu">
-        <option value="">Pilih Menu</option>
-        <option>Sewa BOT WhatsApp</option>
-        <option>Jadibot WhatsApp</option>
-        <option>Murbot</option>
-        <option>Nokos WhatsApp</option>
-        <option>Nokos Telegram</option>
-        <option>Panel Pterodactyl</option>
-        <option>Jasa Run BOT</option>
-        <option>Jasa Unband WhatsApp</option>
-        <option>Jasa Band WhatsApp</option>
-        <option>Lain Lainnya</option>
-      </select>
-      <input type="text" id="nomorwa" placeholder="Masukkan Nomor WhatsApp Anda"/>
-      <button onclick="kirimOrder()">Order 🎛️</button>
+  <div class="container">
+    <h2>📲 Media Sosial</h2>
+    <div class="social-links">
+      <a href="https://www.instagram.com/fizzx.44?igsh=MW91eDdtaHYzbmpkaQ==" target="_blank">📱 Instagram</a>
+      <a href="https://www.tiktok.com/@manusia_44yyy?_t=ZS-8zQ0Jx5ZIXg&_r=1" target="_blank">🎵 TikTok</a>
+      <a href="https://whatsapp.com/channel/0029VbB9tFB5Ui2WUrPAsV2B" target="_blank">🪀 Saluran WhatsApp</a>
+      <a href="https://whatsapp.com/channel/0029VbBXduyFXUuVOlahRN2e" target="_blank">📜 Testimoni</a>
     </div>
   </div>
 
   <footer>
-    &copy; 2025 Fizzx Official Store.
+    <p>🛒 Jika Ingin Beli Langsung :</p>
+    <div class="buy-buttons">
+      <a href="https://t.me/fizzxofficial" target="_blank">📥</a>
+      <a href="YOUR_WHATSAPP_NUMBER" target="_blank">🏷</a>
+    </div>
   </footer>
 
-<script>
-function kirimOrder(){
-  let menu = document.getElementById("menu").value;
-  let nomor = document.getElementById("nomorwa").value;
-  if(menu==="" || nomor===""){
-    alert("Harap pilih menu dan isi nomor WhatsApp!");
-    return;
-  }
-  let pesan = `Ada Orderan Datang 📦%0A`+
-              `Pembelian : ${menu}%0A`+
-              `Dari : ${nomor}`;
-  let url = `https://wa.me/62882005238477?text=${pesan}`;
-  window.open(url, "_blank");
-}
-</script>
+  <!-- Modal -->
+  <div id="menuModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const menuData = {
+      sewa: `
+        <h2>𝐋𝐈𝐒𝐓 𝐒𝐄𝐖𝐀 𝐁𝐎𝐓 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒</h2>
+        • 1 Minggu : 5k<br>
+        • 1 Bulan : 6k<br>
+        • 40 Hari : 10k<br>
+        • 2 Bulan : 15k<br>
+        • Permanent Pribadi : 18k<br>
+        • Permanent Private : 24k
+      `,
+      jadibot: `
+        <h2>𝐋𝐈𝐒𝐓 𝐉𝐀𝐃𝐈𝐁𝐎𝐓 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒</h2>
+        Jadibot Biasa : 13k<br>
+        Jadibot + Owner : 18k
+      `,
+      murbot: `
+        <h2>𝐋𝐈𝐒𝐓 𝐌𝐔𝐑𝐁𝐎𝐓 (𝐌𝐔𝐑𝐈𝐃 𝐁𝐎𝐓) 🛒</h2>
+        Murbot Private : 7k<br>
+        Murbot Public : 14k<br>
+        ʙᴇɴᴇғɪᴛ? ᴛᴀɴʏᴀᴋᴀɴ sᴀᴊᴀ.
+      `,
+      nokoswa: `
+        <h2>𝐋𝐈𝐒𝐓 𝐍𝐎𝐊𝐎𝐒 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒</h2>
+        +62 Indo : 4k, sv 5 hari<br>
+        +7 Russia : 16k, sv 6 hari<br>
+        +63 Filipina : 5k, sv 5 hari<br>
+        +60 Malaysia : 12,5k, sv 7 hari<br>
+        +48 Polandia : 21k, sv 7 hari<br>
+        +44 Inggris : 15k, sv 5 hari<br>
+        +98 Iran : 25k, sv 4 hari<br>
+        +1 Amerika : 12k, sv 7 hari<br>
+        +93 Afganistan : 10k, sv 5 hari<br>
+        Dan lain lain... tanyakan saja
+      `,
+      nokostg: `
+        <h2>𝐋𝐈𝐒𝐓 𝐍𝐎𝐊𝐎𝐒 𝐓𝐄𝐋𝐄𝐆𝐑𝐀𝐌 🛒</h2>
+        +62 Indo : 4k<br>
+        Dan lain lain... tanyakan saja
+      `,
+      panel: `
+        <h2>𝑳𝑰𝑺𝑻 𝑷𝑨𝑵𝑬𝑳 𝑷𝑻𝑬𝑹𝑶𝑫𝑨𝑪𝑻𝒀𝑳 🛒</h2>
+        📦 5GB ➩ 1K 💸<br>
+        📦 6GB ➩ 2K 💸<br>
+        📦 7GB ➩ 3K 💸<br>
+        📦 8GB ➩ 4K 💸<br>
+        📦 9GB ➩ 5K 💸<br>
+        📦 10GB ➩ 6K 💸<br>
+        📦 UNLI ➩ 7K 💸
+      `,
+      runbot: `
+        <h2>𝐉𝐀𝐒𝐀 𝐑𝐔𝐍 𝐁𝐎𝐓 🛒</h2>
+        1× Run BOT + Script : 2k<br>
+        free run 1×
+      `,
+      unband: `
+        <h2>𝐔𝐍𝐁𝐀𝐍𝐃 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒</h2>
+        Unband spam : 10k<br>
+        Unband Perma : 20k<br>
+        Unband Perma Batu : 30k<br>
+        Note: jika gagal, uang kembali.
+      `,
+      band: `
+        <h2>𝐁𝐀𝐍𝐃 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 🛒</h2>
+        Band Per Nomor : 5k
+      `,
+      website: `
+        <h2>𝐋𝐈𝐒𝐓 𝐏𝐄𝐌𝐁𝐔𝐀𝐓𝐀𝐍 𝐖𝐄𝐁𝐒𝐈𝐓𝐄 🛒</h2>
+        • Website Store<br>
+        • Website Informasi<br>
+        • Website Komunitas<br>
+        • Dan Lain Lain... (harga nego)
+      `,
+      lain: `
+        <h2>𝐋𝐀𝐈𝐍 𝐋𝐀𝐈𝐍𝐍𝐘𝐀 🛒</h2>
+        ➼ 💾 RESS PANEL ➩ 7K 💸<br>
+        ➼ 💾 ADMIN PANEL ➩ 12K 💸<br>
+        ➼ 💾 PT PANEL ➩ 15K 💸
+      `
+    };
+
+    function openModal(menu) {
+      document.getElementById("menuModal").style.display = "block";
+      document.getElementById("modalBody").innerHTML = menuData[menu];
+    }
+    function closeModal() {
+      document.getElementById("menuModal").style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == document.getElementById("menuModal")) {
+        closeModal();
+      }
+    }
+  </script>
 
 </body>
 </html>
