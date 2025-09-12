@@ -1,207 +1,302 @@
-<!doctype html>
-
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Welcome Downloder — Prototype</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>Welcome Downloder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     :root{
-      --maroon:#5b0b0b; /* dark maroon */
-      --maroon-bright:#7f1010;
-      --pinkorange:#ff7f6b;
-      --card-shadow: 0 12px 25px rgba(0,0,0,0.45);
+      --maroon:#5b0018; /* deep maroon */
+      --maroon-bright:#7a0026; /* hover/active */
+      --accent-grad: linear-gradient(135deg,#ff7a8a,#ff9a45);
+      --glass: rgba(255,255,255,0.06);
+      --white-dull: #f3f3f3;
+      --shadow: 0 8px 18px rgba(0,0,0,0.45);
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;min-height:100vh; font-family: "Orbitron", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      color:#fff; overflow-x:hidden;
-      background:linear-gradient(120deg,var(--maroon) 0%, #400404 40%, #2a0202 100%);
+    html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--maroon);color:var(--white-dull)}
+    /* animated maroon background */
+    body::before{
+      content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+      background: radial-gradient(ellipse at 20% 10%, rgba(255,0,0,0.06), transparent 10%),
+                  radial-gradient(ellipse at 80% 90%, rgba(255,255,255,0.03), transparent 20%);
+      mix-blend-mode: screen; animation: moveBG 12s linear infinite alternate;
     }
-    /* animated moving background overlay */
-    .bg-anim{
-      position:fixed; inset:0; z-index:0; pointer-events:none; mix-blend-mode:overlay;
-      background: linear-gradient(90deg, rgba(255,120,120,0.04), rgba(255,100,80,0.06), rgba(255,140,120,0.03));
-      animation: slide 10s linear infinite alternate;
-    }
-    @keyframes slide{from{transform:translateX(-10%)}to{transform:translateX(10%)}}.container{position:relative; z-index:1; max-width:980px; margin:40px auto; padding:28px}
-.header{display:flex;align-items:center;gap:18px}
-.logo-placeholder{
-  width:78px;height:78px;border-radius:12px;background:linear-gradient(180deg,#fff1 0,#fff0 100%);
-  border:2px dashed rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;
-  color:rgba(255,255,255,0.6);font-size:11px;text-align:center;padding:8px
-}
-.title-wrap{flex:1}
-.title-pixel{font-family:'Press Start 2P', monospace; font-size:18px; letter-spacing:1px; color:#fff;
-  text-shadow: 0 2px 0 rgba(0,0,0,0.8), 0 6px 18px rgba(0,0,0,0.6);}
-.subtitle{color:rgba(255,255,255,0.92); margin-top:8px; font-size:14px}
+    @keyframes moveBG{
+      from{transform:translate(0,0) scale(1)} to{transform:translate(-6%,4%) scale(1.05)}
+    }.container{max-width:980px;margin:28px auto;padding:28px;}
+.card{background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(255,255,255,0.02));border-radius:18px;padding:22px;box-shadow:var(--shadow);}
 
-/* social grid */
-.grid{display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:28px}
-.social-card{background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.08));
-  border-radius:14px; padding:18px; cursor:pointer; text-align:center; box-shadow: var(--card-shadow);
-  transform:translateY(0); transition:transform .14s ease, box-shadow .14s ease; border:1px solid rgba(255,255,255,0.04)}
-.social-card:active{transform:translateY(3px)}
-.tag{display:inline-block;padding:8px 12px;border-radius:10px;background:linear-gradient(135deg,var(--pinkorange), #ffb18f);
-  color:#fff;font-weight:700}
-.social-name{margin-top:8px;font-weight:700}
+header{display:flex;gap:18px;align-items:center}
+.logo-placeholder{width:90px;height:90px;border-radius:12px;border:3px dashed rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer}
+.logo-placeholder small{font-size:10px;opacity:0.9;color:var(--white-dull);text-align:center}
 
-/* control panel / modal */
-.panel{margin-top:26px;background:rgba(0,0,0,0.15);padding:18px;border-radius:12px;box-shadow:var(--card-shadow)}
-.row{display:flex;gap:12px;align-items:center}
-input[type=text]{flex:1;padding:12px;border-radius:10px;border:none;outline:none;background:#fff;color:#222;}
-button.btn{padding:10px 14px;border-radius:10px;border:none;background:var(--maroon-bright);color:#fff;font-weight:700;cursor:pointer;
-  box-shadow:0 8px 18px rgba(0,0,0,0.5);transition:transform .12s, background .12s}
-button.btn:active{background:var(--maroon); transform:translateY(2px)}
+.title{font-family:'Press Start 2P', monospace;color:var(--white-dull);font-size:20px;text-shadow: 2px 2px 0 rgba(0,0,0,0.6)}
+.subtitle{margin-top:8px;color:rgba(255,255,255,0.92);font-family:'Bungee', cursive;font-size:16px}
 
-/* downloads list */
-.options{display:flex;gap:10px;margin-top:12px}
-.opt{background:#fff;padding:10px 12px;border-radius:10px;color:#222;cursor:pointer;flex:1;text-align:center;font-weight:700}
-.opt:active{background:#eee}
+/* services grid */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;margin-top:18px}
+.service{padding:14px;border-radius:12px;cursor:pointer;background:var(--accent-grad);box-shadow:0 6px 12px rgba(0,0,0,0.3);transform:translateY(0);transition:transform .16s ease,box-shadow .16s ease}
+.service:active{background:var(--maroon-bright);transform:translateY(2px)}
+.service h4{margin:0;font-size:16px;color:#3b0210;text-align:center}
 
-/* stats */
-.stats{display:flex;gap:12px;margin-top:18px}
-.stat{flex:1;background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.06));padding:12px;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.45)}
-.stat h3{margin:0;font-size:13px}
-.stat p{margin:6px 0 0;font-size:22px;font-weight:800}
+.panel{margin-top:16px;padding:16px;background:var(--glass);border-radius:10px;display:none}
+.panel.active{display:block}
 
-/* footer note */
-.note{margin-top:16px;color:rgba(255,255,255,0.75);font-size:13px}
+.field{display:flex;gap:10px;align-items:center}
+input[type=text]{flex:1;padding:12px;border-radius:8px;border:none;background:#fff;color:#111;box-shadow:inset 0 2px 6px rgba(0,0,0,0.12)}
+.btn{padding:10px 14px;border-radius:10px;border:none;background:var(--maroon);color:white;font-weight:700;cursor:pointer;box-shadow:0 6px 10px rgba(0,0,0,0.28);transition:transform .12s ease,background .12s}
+.btn:active{background:var(--maroon-bright);transform:translateY(2px)}
+
+.actions{margin-top:12px;display:flex;gap:8px}
+.small{font-size:13px;color:rgba(255,255,255,0.9)}
+.note{margin-top:12px;padding:10px;border-radius:8px;background:rgba(0,0,0,0.22);font-size:13px}
+
+/* statistics box */
+.stats{display:flex;gap:12px;margin-top:16px}
+.stat{flex:1;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.02));box-shadow:0 8px 18px rgba(0,0,0,0.4)}
+.stat h3{margin:0;font-size:18px}
+.stat p{margin:6px 0 0 0;color:rgba(255,255,255,0.85)}
+
+footer{margin-top:22px;color:rgba(255,255,255,0.8);font-size:13px;text-align:center}
 
 /* responsive */
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)} .container{padding:18px}}
-@media(max-width:420px){.grid{grid-template-columns:repeat(1,1fr)}}
+@media (max-width:520px){
+  .title{font-size:12px}
+  .subtitle{font-size:12px}
+}
 
   </style>
 </head>
 <body>
-  <div class="bg-anim"></div>
   <div class="container">
-    <div class="header">
-      <div class="logo-placeholder" id="logoPlaceholder">Upload<br>Logo</div>
-      <div class="title-wrap">
-        <div class="title-pixel">Welcome Downloder</div>
-        <div class="subtitle">Di Sini Bisa Untuk Mendownload Video Tanpa Watermark'</div>
-        <small style="display:block;margin-top:8px;color:rgba(255,255,255,0.6);font-size:11px">(Klik kotak Logo untuk mengganti secara manual)</small>
-      </div>
-      <div style="text-align:right">
-        <button class="btn" id="themeBtn">Mode</button>
-      </div>
-    </div><div class="grid" id="socialGrid">
-  <div class="social-card" data-platform="tiktok"><div class="tag">Tiktok</div><div class="social-name">Tiktok</div></div>
-  <div class="social-card" data-platform="instagram"><div class="tag">Instagram</div><div class="social-name">Instagram</div></div>
-  <div class="social-card" data-platform="facebook"><div class="tag">Facebook</div><div class="social-name">Facebook</div></div>
-  <div class="social-card" data-platform="twitter"><div class="tag">Twitter</div><div class="social-name">Twitter</div></div>
-  <div class="social-card" data-platform="youtube"><div class="tag">YouTube</div><div class="social-name">YouTube</div></div>
+    <div class="card">
+      <header>
+        <div class="logo-placeholder" id="logoPlaceholder" title="Klik untuk menambahkan logo">
+          <small>Upload Logo
+            (manual)</small>
+        </div>
+        <div>
+          <div class="title">Welcome Downloder</div>
+          <div class="subtitle">Di Sini Bisa Untuk Mendownload Video Tanpa Watermark'</div>
+        </div>
+      </header><div class="services" aria-label="Layanan Download">
+    <div class="service" data-service="tiktok"><h4>Tiktok</h4></div>
+    <div class="service" data-service="instagram"><h4>Instagram</h4></div>
+    <div class="service" data-service="facebook"><h4>Facebook</h4></div>
+    <div class="service" data-service="twitter"><h4>Twitter</h4></div>
+    <div class="service" data-service="youtube"><h4>YouTube</h4></div>
+  </div>
+
+  <!-- dynamic panels -->
+  <div id="panels">
+    <!-- Template used by JS -->
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <h3 id="statCount">0</h3>
+      <p>Downloads Sukses</p>
+    </div>
+    <div class="stat">
+      <h3 id="statFail">0</h3>
+      <p>Gagal</p>
+    </div>
+    <div class="stat">
+      <h3 id="statActive">0</h3>
+      <p>Permintaan Hari Ini</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Penjelasan:</strong> "download tanpa watermark" = mengunduh video tanpa logo platform. "download MP3" = unduh audio. "download MP4" = unduh video YouTube.
+  </div>
+
+  <footer>Catatan: Pastikan Anda memiliki hak untuk mengunduh konten ini dan mematuhi ketentuan layanan platform.</footer>
 </div>
 
-<div class="panel" id="panel" style="display:none">
-  <div class="row" style="margin-bottom:8px"><input type="text" id="linkInput" placeholder="Masukkan link di sini..." autocomplete="off"><button class="btn" id="pasteBtn">Tempel</button></div>
-  <div class="options" id="options"></div>
-  <div class="note" id="noteText"></div>
-</div>
+  </div>  <script>
+    /*******************
+     * CONFIG
+     * Ganti nilai ini dengan API base dan token yang Anda berikan
+     *******************/
+    const API_BASE = 'https://api.nekorinn.my.id';
+    const TOKEN_DOTO = 'APIKEY'; // dotoken
+    const TOKEN_LINODE = 'APIKEY'; // linodetoken
 
-<div class="stats">
-  <div class="stat"><h3>Unduhan Sukses</h3><p id="countDownload">0</p></div>
-  <div class="stat"><h3>Total Pengguna</h3><p id="countUsers">128</p></div>
-  <div class="stat"><h3>Server</h3><p id="serverStatus">Online</p></div>
-</div>
+    // services config (which actions to show)
+    const SERVICES = {
+      tiktok: ['download tanpa watermark','download MP3'],
+      instagram: ['download tanpa watermark','download MP3'],
+      facebook: ['download tanpa watermark','download MP3'],
+      twitter: ['download tanpa watermark','download MP3'],
+      youtube: ['download MP3','download MP4']
+    };
 
-<div class="note" style="opacity:0.9">Penjelasan singkat: "download tanpa watermark" berarti mengunduh versi video tanpa logo platform. (Catatan: Untuk mengambil video dari platform tertentu sering diperlukan layanan server khusus atau API resmi. Prototipe ini hanya UI — baca catatan di bawah.)</div>
+    // helper to create panel UI
+    function createPanel(service){
+      const div = document.createElement('div');
+      div.className = 'panel';
+      div.id = 'panel-' + service;
 
-  </div>  <input type="file" id="logoFile" accept="image/*" style="display:none">  <script>
-    // --- Important note (visible to user in UI) ---
-    // This is a frontend prototype. Browsers block direct cross-origin fetching of many platform videos due to CORS.
-    // To download videos from TikTok/IG/Facebook/Twitter/YouTube reliably you need a server-side component or
-    // use official APIs (for YouTube use YouTube Data API with proper auth). This prototype demonstrates UI +
-    // a simple client-side download for direct file URLs or CORS-enabled endpoints.
+      div.innerHTML = `
+        <div class="field">
+          <input type="text" placeholder="Masukkan link ${service} di sini" id="input-${service}">
+          <button class="btn" id="paste-${service}">Paste</button>
+        </div>
+        <div class="actions" id="actions-${service}">
+        </div>
+        <div class="small" id="status-${service}"></div>
+      `;
 
-    const socialGrid = document.getElementById('socialGrid');
-    const panel = document.getElementById('panel');
-    const options = document.getElementById('options');
-    const linkInput = document.getElementById('linkInput');
-    const noteText = document.getElementById('noteText');
-    const countDownload = document.getElementById('countDownload');
+      // add buttons for each action
+      const actions = div.querySelector('#actions-' + service);
+      SERVICES[service].forEach(action => {
+        const b = document.createElement('button');
+        b.className = 'btn';
+        b.textContent = action;
+        b.addEventListener('click', () => handleAction(service, action, div));
+        actions.appendChild(b);
+      });
 
-    let currentPlatform = null;
-    let downloadCount = 0;
+      return div;
+    }
 
-    function showPanelFor(platform){
-      currentPlatform = platform;
-      panel.style.display='block';
-      linkInput.value='';
-      options.innerHTML='';
-      if(platform === 'youtube'){
-        options.appendChild(makeOpt('Download MP3', 'mp3'));
-        options.appendChild(makeOpt('Download MP4', 'mp4'));
-        noteText.textContent = 'YouTube: masukkan link video YouTube. Jika ingin bekerja sepenuhnya, butuh layanan server atau API resmi.';
-      } else {
-        options.appendChild(makeOpt('Download tanpa watermark', 'nomark'));
-        options.appendChild(makeOpt('Download MP3', 'mp3'));
-        noteText.textContent = platform.charAt(0).toUpperCase()+platform.slice(1)+': masukkan link postingan (perhatikan batasan CORS).';
+    // initialize UI
+    const servicesEls = document.querySelectorAll('.service');
+    const panelsWrap = document.getElementById('panels');
+    servicesEls.forEach(s => {
+      const service = s.dataset.service;
+      panelsWrap.appendChild(createPanel(service));
+      s.addEventListener('click', ()=>{
+        document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+        document.getElementById('panel-'+service).classList.add('active');
+      });
+    });
+
+    // paste button: paste from clipboard
+    document.addEventListener('click', async (e)=>{
+      if(e.target && e.target.id && e.target.id.startsWith('paste-')){
+        const service = e.target.id.replace('paste-','');
+        try{
+          const text = await navigator.clipboard.readText();
+          document.getElementById('input-'+service).value = text;
+        }catch(err){
+          alert('Tidak bisa mengakses clipboard: ' + err.message);
+        }
       }
-    }
-
-    function makeOpt(label, type){
-      const d = document.createElement('div'); d.className='opt'; d.textContent=label;
-      d.addEventListener('click', ()=>handleDownload(type));
-      return d;
-    }
-
-    socialGrid.addEventListener('click', (e)=>{
-      const card = e.target.closest('.social-card'); if(!card) return;
-      const p = card.dataset.platform; showPanelFor(p);
-      // smooth scroll to panel
-      panel.scrollIntoView({behavior:'smooth', block:'center'});
     });
 
-    document.getElementById('pasteBtn').addEventListener('click', async ()=>{
-      try{ const text = await navigator.clipboard.readText(); linkInput.value = text; }catch(e){ alert('Gagal ambil clipboard: '+e.message)}
-    });
+    // statistics (basic client-side counts)
+    let succ=0, fail=0, activeReq=0;
+    function updateStats(){
+      document.getElementById('statCount').textContent = succ;
+      document.getElementById('statFail').textContent = fail;
+      document.getElementById('statActive').textContent = activeReq;
+    }
 
-    async function handleDownload(type){
-      const url = linkInput.value.trim();
-      if(!url){ alert('Masukkan link terlebih dahulu.'); return; }
+    // handle action
+    async function handleAction(service, action, panel){
+      const input = panel.querySelector('input').value.trim();
+      const status = panel.querySelector('#status-' + service);
+      if(!input){ status.textContent = 'Masukkan link terlebih dahulu.'; return; }
+      status.textContent = 'Memproses...'; activeReq++; updateStats();
 
-      // Basic filename suggestion
-      let ext = (type==='mp3'?'mp3':'mp4');
-      let name = (currentPlatform||'file') + '-' + Date.now() + '.' + ext;
-
-      // Attempt to fetch the resource as a blob (works only if CORS allows it or URL is direct file link)
       try{
-        noteText.textContent = 'Mengunduh... (jika gagal, kemungkinan karena CORS atau butuh backend)';
-        const resp = await fetch(url);
-        if(!resp.ok) throw new Error('Fetch gagal: '+resp.status);
-        const blob = await resp.blob();
-        // If user asked mp3 but resource is mp4, we cannot transcode in-browser reliably. This prototype will
-        // just download the blob as-is. Real conversion requires server-side processing.
-        const blobUrl = URL.createObjectURL(blob);
-        const a = document.createElement('a'); a.href = blobUrl; a.download = name; document.body.appendChild(a); a.click(); a.remove();
-        URL.revokeObjectURL(blobUrl);
-        downloadCount += 1; countDownload.textContent = downloadCount;
-        noteText.textContent = 'Selesai: file seharusnya terdownload ke folder Downloads perangkat Anda.';
+        // build request -- many public downloader APIs accept POST JSON {url, service, token}
+        const payload = {url: input, service: service, token: TOKEN_DOTO};
+
+        // Try primary endpoint
+        let res = await fetch(API_BASE + '/download', {
+          method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+        });
+
+        let result;
+        const ctype = res.headers.get('content-type') || '';
+        if(ctype.includes('application/json')){
+          result = await res.json();
+        } else {
+          // in case API returns file stream
+          const blob = await res.blob();
+          await saveBlobToDevice(blob, guessFilename(service, action, input));
+          succ++; status.textContent = 'Sukses: berkas disimpan.'; updateStats(); return;
+        }
+
+        // If API returned JSON, we expect it to contain 'file' or 'url' field
+        if(result && (result.file || result.url)){
+          const fileUrl = result.file || result.url;
+          // if API returns direct base64
+          if(result.base64){
+            const blob = base64ToBlob(result.base64, result.mime || 'application/octet-stream');
+            await saveBlobToDevice(blob, guessFilename(service, action, input));
+            succ++; status.textContent = 'Sukses: berkas disimpan.'; updateStats(); return;
+          }
+
+          // fetch the returned url
+          const fileResp = await fetch(fileUrl);
+          if(!fileResp.ok) throw new Error('Gagal mengambil berkas dari API');
+          const blob = await fileResp.blob();
+          await saveBlobToDevice(blob, guessFilename(service, action, input));
+          succ++; status.textContent = 'Sukses: berkas disimpan.'; updateStats();
+        } else {
+          throw new Error(result && result.message ? result.message : 'Respons API tidak dikenal');
+        }
       }catch(err){
         console.error(err);
-        noteText.textContent = 'Gagal mengunduh secara langsung. Untuk dukungan penuh, perlu backend (server) yang mengambil video dari platform dan menyalurkannya ke sini. Pesan: '+err.message;
-        alert('Gagal mengunduh langsung dari browser. Lihat catatan UI untuk solusi server-side.');
-      }
+        fail++; status.textContent = 'Gagal: ' + err.message; updateStats();
+      }finally{ activeReq--; updateStats(); }
     }
 
-    // logo upload
-    const logoPlaceholder = document.getElementById('logoPlaceholder');
-    const logoFile = document.getElementById('logoFile');
-    logoPlaceholder.addEventListener('click', ()=>logoFile.click());
-    logoFile.addEventListener('change', ()=>{
-      const f = logoFile.files[0]; if(!f) return;
-      const imgURL = URL.createObjectURL(f);
-      logoPlaceholder.style.background = `url(${imgURL}) center/cover no-repeat`; logoPlaceholder.textContent='';
+    // blob saver - triggers browser download. On mobile, browser decides where to store (Downloads).
+    async function saveBlobToDevice(blob, filename){
+      // Create object URL and click anchor
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      // release
+      setTimeout(()=>URL.revokeObjectURL(url), 10000);
+
+      // Try Android-specific intent to save to gallery (best-effort) -- won't work in most mobile browsers
+      try{
+        if(navigator && navigator.msSaveOrOpenBlob){
+          navigator.msSaveOrOpenBlob(blob, filename);
+        }
+      }catch(e){ /* ignore */ }
+    }
+
+    function guessFilename(service, action, inputUrl){
+      const ext = action.toLowerCase().includes('mp3')? 'mp3' : (action.toLowerCase().includes('mp4')? 'mp4':'mp4');
+      const id = Date.now().toString().slice(-6);
+      return `${service}_${id}.${ext}`;
+    }
+
+    function base64ToBlob(base64, mime){
+      const byteChars = atob(base64);
+      const byteNumbers = new Array(byteChars.length);
+      for(let i=0;i<byteChars.length;i++) byteNumbers[i] = byteChars.charCodeAt(i);
+      const byteArray = new Uint8Array(byteNumbers);
+      return new Blob([byteArray], {type:mime});
+    }
+
+    // logo placeholder: let user click and provide an image URL to preview
+    document.getElementById('logoPlaceholder').addEventListener('click', ()=>{
+      const url = prompt('Masukkan link logo (jpg/png) — nanti akan ditampilkan di sini');
+      if(url){
+        const el = document.getElementById('logoPlaceholder');
+        el.style.backgroundImage = `url(${url})`;
+        el.style.backgroundSize = 'cover';
+        el.style.border = 'none';
+        el.innerHTML = '';
+      }
     });
 
-    // small theme toggle example
-    document.getElementById('themeBtn').addEventListener('click', ()=>{
-      document.body.classList.toggle('alt'); alert('Mode beralih (demo).');
-    });
+    // initial stats
+    updateStats();
 
+    // Accessibility: keyboard open first service
+    document.querySelectorAll('.service')[0].focus();
   </script></body>
-    </html>
+</html>
