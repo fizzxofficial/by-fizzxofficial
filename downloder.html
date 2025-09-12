@@ -1,0 +1,207 @@
+<!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Welcome Downloder — Prototype</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --maroon:#5b0b0b; /* dark maroon */
+      --maroon-bright:#7f1010;
+      --pinkorange:#ff7f6b;
+      --card-shadow: 0 12px 25px rgba(0,0,0,0.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;min-height:100vh; font-family: "Orbitron", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#fff; overflow-x:hidden;
+      background:linear-gradient(120deg,var(--maroon) 0%, #400404 40%, #2a0202 100%);
+    }
+    /* animated moving background overlay */
+    .bg-anim{
+      position:fixed; inset:0; z-index:0; pointer-events:none; mix-blend-mode:overlay;
+      background: linear-gradient(90deg, rgba(255,120,120,0.04), rgba(255,100,80,0.06), rgba(255,140,120,0.03));
+      animation: slide 10s linear infinite alternate;
+    }
+    @keyframes slide{from{transform:translateX(-10%)}to{transform:translateX(10%)}}.container{position:relative; z-index:1; max-width:980px; margin:40px auto; padding:28px}
+.header{display:flex;align-items:center;gap:18px}
+.logo-placeholder{
+  width:78px;height:78px;border-radius:12px;background:linear-gradient(180deg,#fff1 0,#fff0 100%);
+  border:2px dashed rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,0.6);font-size:11px;text-align:center;padding:8px
+}
+.title-wrap{flex:1}
+.title-pixel{font-family:'Press Start 2P', monospace; font-size:18px; letter-spacing:1px; color:#fff;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.8), 0 6px 18px rgba(0,0,0,0.6);}
+.subtitle{color:rgba(255,255,255,0.92); margin-top:8px; font-size:14px}
+
+/* social grid */
+.grid{display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:28px}
+.social-card{background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.08));
+  border-radius:14px; padding:18px; cursor:pointer; text-align:center; box-shadow: var(--card-shadow);
+  transform:translateY(0); transition:transform .14s ease, box-shadow .14s ease; border:1px solid rgba(255,255,255,0.04)}
+.social-card:active{transform:translateY(3px)}
+.tag{display:inline-block;padding:8px 12px;border-radius:10px;background:linear-gradient(135deg,var(--pinkorange), #ffb18f);
+  color:#fff;font-weight:700}
+.social-name{margin-top:8px;font-weight:700}
+
+/* control panel / modal */
+.panel{margin-top:26px;background:rgba(0,0,0,0.15);padding:18px;border-radius:12px;box-shadow:var(--card-shadow)}
+.row{display:flex;gap:12px;align-items:center}
+input[type=text]{flex:1;padding:12px;border-radius:10px;border:none;outline:none;background:#fff;color:#222;}
+button.btn{padding:10px 14px;border-radius:10px;border:none;background:var(--maroon-bright);color:#fff;font-weight:700;cursor:pointer;
+  box-shadow:0 8px 18px rgba(0,0,0,0.5);transition:transform .12s, background .12s}
+button.btn:active{background:var(--maroon); transform:translateY(2px)}
+
+/* downloads list */
+.options{display:flex;gap:10px;margin-top:12px}
+.opt{background:#fff;padding:10px 12px;border-radius:10px;color:#222;cursor:pointer;flex:1;text-align:center;font-weight:700}
+.opt:active{background:#eee}
+
+/* stats */
+.stats{display:flex;gap:12px;margin-top:18px}
+.stat{flex:1;background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0.06));padding:12px;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.45)}
+.stat h3{margin:0;font-size:13px}
+.stat p{margin:6px 0 0;font-size:22px;font-weight:800}
+
+/* footer note */
+.note{margin-top:16px;color:rgba(255,255,255,0.75);font-size:13px}
+
+/* responsive */
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)} .container{padding:18px}}
+@media(max-width:420px){.grid{grid-template-columns:repeat(1,1fr)}}
+
+  </style>
+</head>
+<body>
+  <div class="bg-anim"></div>
+  <div class="container">
+    <div class="header">
+      <div class="logo-placeholder" id="logoPlaceholder">Upload<br>Logo</div>
+      <div class="title-wrap">
+        <div class="title-pixel">Welcome Downloder</div>
+        <div class="subtitle">Di Sini Bisa Untuk Mendownload Video Tanpa Watermark'</div>
+        <small style="display:block;margin-top:8px;color:rgba(255,255,255,0.6);font-size:11px">(Klik kotak Logo untuk mengganti secara manual)</small>
+      </div>
+      <div style="text-align:right">
+        <button class="btn" id="themeBtn">Mode</button>
+      </div>
+    </div><div class="grid" id="socialGrid">
+  <div class="social-card" data-platform="tiktok"><div class="tag">Tiktok</div><div class="social-name">Tiktok</div></div>
+  <div class="social-card" data-platform="instagram"><div class="tag">Instagram</div><div class="social-name">Instagram</div></div>
+  <div class="social-card" data-platform="facebook"><div class="tag">Facebook</div><div class="social-name">Facebook</div></div>
+  <div class="social-card" data-platform="twitter"><div class="tag">Twitter</div><div class="social-name">Twitter</div></div>
+  <div class="social-card" data-platform="youtube"><div class="tag">YouTube</div><div class="social-name">YouTube</div></div>
+</div>
+
+<div class="panel" id="panel" style="display:none">
+  <div class="row" style="margin-bottom:8px"><input type="text" id="linkInput" placeholder="Masukkan link di sini..." autocomplete="off"><button class="btn" id="pasteBtn">Tempel</button></div>
+  <div class="options" id="options"></div>
+  <div class="note" id="noteText"></div>
+</div>
+
+<div class="stats">
+  <div class="stat"><h3>Unduhan Sukses</h3><p id="countDownload">0</p></div>
+  <div class="stat"><h3>Total Pengguna</h3><p id="countUsers">128</p></div>
+  <div class="stat"><h3>Server</h3><p id="serverStatus">Online</p></div>
+</div>
+
+<div class="note" style="opacity:0.9">Penjelasan singkat: "download tanpa watermark" berarti mengunduh versi video tanpa logo platform. (Catatan: Untuk mengambil video dari platform tertentu sering diperlukan layanan server khusus atau API resmi. Prototipe ini hanya UI — baca catatan di bawah.)</div>
+
+  </div>  <input type="file" id="logoFile" accept="image/*" style="display:none">  <script>
+    // --- Important note (visible to user in UI) ---
+    // This is a frontend prototype. Browsers block direct cross-origin fetching of many platform videos due to CORS.
+    // To download videos from TikTok/IG/Facebook/Twitter/YouTube reliably you need a server-side component or
+    // use official APIs (for YouTube use YouTube Data API with proper auth). This prototype demonstrates UI +
+    // a simple client-side download for direct file URLs or CORS-enabled endpoints.
+
+    const socialGrid = document.getElementById('socialGrid');
+    const panel = document.getElementById('panel');
+    const options = document.getElementById('options');
+    const linkInput = document.getElementById('linkInput');
+    const noteText = document.getElementById('noteText');
+    const countDownload = document.getElementById('countDownload');
+
+    let currentPlatform = null;
+    let downloadCount = 0;
+
+    function showPanelFor(platform){
+      currentPlatform = platform;
+      panel.style.display='block';
+      linkInput.value='';
+      options.innerHTML='';
+      if(platform === 'youtube'){
+        options.appendChild(makeOpt('Download MP3', 'mp3'));
+        options.appendChild(makeOpt('Download MP4', 'mp4'));
+        noteText.textContent = 'YouTube: masukkan link video YouTube. Jika ingin bekerja sepenuhnya, butuh layanan server atau API resmi.';
+      } else {
+        options.appendChild(makeOpt('Download tanpa watermark', 'nomark'));
+        options.appendChild(makeOpt('Download MP3', 'mp3'));
+        noteText.textContent = platform.charAt(0).toUpperCase()+platform.slice(1)+': masukkan link postingan (perhatikan batasan CORS).';
+      }
+    }
+
+    function makeOpt(label, type){
+      const d = document.createElement('div'); d.className='opt'; d.textContent=label;
+      d.addEventListener('click', ()=>handleDownload(type));
+      return d;
+    }
+
+    socialGrid.addEventListener('click', (e)=>{
+      const card = e.target.closest('.social-card'); if(!card) return;
+      const p = card.dataset.platform; showPanelFor(p);
+      // smooth scroll to panel
+      panel.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+
+    document.getElementById('pasteBtn').addEventListener('click', async ()=>{
+      try{ const text = await navigator.clipboard.readText(); linkInput.value = text; }catch(e){ alert('Gagal ambil clipboard: '+e.message)}
+    });
+
+    async function handleDownload(type){
+      const url = linkInput.value.trim();
+      if(!url){ alert('Masukkan link terlebih dahulu.'); return; }
+
+      // Basic filename suggestion
+      let ext = (type==='mp3'?'mp3':'mp4');
+      let name = (currentPlatform||'file') + '-' + Date.now() + '.' + ext;
+
+      // Attempt to fetch the resource as a blob (works only if CORS allows it or URL is direct file link)
+      try{
+        noteText.textContent = 'Mengunduh... (jika gagal, kemungkinan karena CORS atau butuh backend)';
+        const resp = await fetch(url);
+        if(!resp.ok) throw new Error('Fetch gagal: '+resp.status);
+        const blob = await resp.blob();
+        // If user asked mp3 but resource is mp4, we cannot transcode in-browser reliably. This prototype will
+        // just download the blob as-is. Real conversion requires server-side processing.
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = blobUrl; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+        URL.revokeObjectURL(blobUrl);
+        downloadCount += 1; countDownload.textContent = downloadCount;
+        noteText.textContent = 'Selesai: file seharusnya terdownload ke folder Downloads perangkat Anda.';
+      }catch(err){
+        console.error(err);
+        noteText.textContent = 'Gagal mengunduh secara langsung. Untuk dukungan penuh, perlu backend (server) yang mengambil video dari platform dan menyalurkannya ke sini. Pesan: '+err.message;
+        alert('Gagal mengunduh langsung dari browser. Lihat catatan UI untuk solusi server-side.');
+      }
+    }
+
+    // logo upload
+    const logoPlaceholder = document.getElementById('logoPlaceholder');
+    const logoFile = document.getElementById('logoFile');
+    logoPlaceholder.addEventListener('click', ()=>logoFile.click());
+    logoFile.addEventListener('change', ()=>{
+      const f = logoFile.files[0]; if(!f) return;
+      const imgURL = URL.createObjectURL(f);
+      logoPlaceholder.style.background = `url(${imgURL}) center/cover no-repeat`; logoPlaceholder.textContent='';
+    });
+
+    // small theme toggle example
+    document.getElementById('themeBtn').addEventListener('click', ()=>{
+      document.body.classList.toggle('alt'); alert('Mode beralih (demo).');
+    });
+
+  </script></body>
+    </html>
